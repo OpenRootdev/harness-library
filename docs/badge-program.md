@@ -9,12 +9,12 @@ The program rewards contributors for making reusable harnesses easier to discove
 Example:
 
 ```md
-[![Listed in Harness Library](https://kaelux-labs.github.io/harness-library/badges/your-slug.svg)](https://kaelux-labs.github.io/harness-library/harnesses/your-slug/)
+[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
 ```
 
 Exact Markdown or an equivalent linked HTML image is supported. The image alt text must be “Listed in Harness Library”. Examples inside code fences or HTML comments do not qualify.
 
-Previously issued `https://kaelux-labs.github.io/harness-library/#your-slug` backlinks still qualify and navigate to the corresponding page. Use the real page URL for new badges.
+Previously issued `https://openrootdev.github.io/harness-library/#your-slug` backlinks still qualify and navigate to the corresponding page. Use the real page URL for new badges.
 
 Active listings appear before regular listings, then alphabetically within each group. Search and category filters still apply. The directory shows a **Community boost** label and its expiry on the detail page. This is promotional placement; review status and quality claims remain independent.
 

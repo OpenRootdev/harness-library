@@ -2,7 +2,7 @@
 
 English documentation is authoritative. Translations are full equivalents of the
 maintained sources below, not summaries. The canonical repository is
-[Kaelux-Labs/harness-library](https://github.com/Kaelux-Labs/harness-library).
+[Kaelux-Labs/harness-library](https://github.com/OpenRootdev/harness-library).
 Translated paths follow `docs/i18n/<locale>/<repo-relative-source-path>`.
 
 ## Inventory and Coverage

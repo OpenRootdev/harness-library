@@ -9,7 +9,7 @@ body:
         **New submissions are welcome — a useful skill folder can be enough.**
         Share your repository and setup below. No fork, pull request or Harneloop dependency is required.
         A maintainer reviews the instructions and package scope, asks questions here if needed, and publishes approved listings.
-        [Read the short submission guide](https://kaelux-labs.github.io/harness-library/submit/).
+        [Read the short submission guide](https://openrootdev.github.io/harness-library/submit/).
   - type: input
     id: name
     attributes:

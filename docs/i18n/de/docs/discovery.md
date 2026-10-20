@@ -1,21 +1,23 @@
 # Auffindbarkeit und Indexierung
 
+Aktueller Standort seit `2026-10-20`: [OpenRootdev/harness-library](https://github.com/OpenRootdev/harness-library) und das [Verzeichnis](https://openrootdev.github.io/harness-library/). Die historischen Hinweise unten beschreiben den vorherigen Umzug.
+
 Das öffentliche Verzeichnis veröffentlicht vollständiges HTML unter stabilen URLs. Suchmaschinen, Browser ohne JavaScript und Agenten können Installation, Voraussetzungen, Quelle, Distribution und Prüfumfang jedes genehmigten Harness direkt lesen. JavaScript verbessert nur Filterung, Kopieren und die frühere Hash-Navigation.
 
 ## Öffentliche Ressourcen
 
-- [Verzeichnis](https://kaelux-labs.github.io/harness-library/) und [Einreichungsleitfaden](https://kaelux-labs.github.io/harness-library/submit/).
-- [Sitemap](https://kaelux-labs.github.io/harness-library/sitemap.xml): nur kanonische HTML-Seiten. Tägliche Badge-Prüfungen erfinden keine Änderungsdaten für Inhalte.
-- [llms.txt](https://kaelux-labs.github.io/harness-library/llms.txt): ein kompakter Wegweiser zu Markdown-Installationsseiten und Daten.
-- [llms-full.txt](https://kaelux-labs.github.io/harness-library/llms-full.txt): zusammengefasster öffentlicher Text.
-- [catalog.json](https://kaelux-labs.github.io/harness-library/catalog.json): geprüfte Einträge, kanonische Seiten-URLs, Installation, manuelle Einrichtung und Belege mit definiertem Umfang.
+- [Verzeichnis](https://openrootdev.github.io/harness-library/) und [Einreichungsleitfaden](https://openrootdev.github.io/harness-library/submit/).
+- [Sitemap](https://openrootdev.github.io/harness-library/sitemap.xml): nur kanonische HTML-Seiten. Tägliche Badge-Prüfungen erfinden keine Änderungsdaten für Inhalte.
+- [llms.txt](https://openrootdev.github.io/harness-library/llms.txt): ein kompakter Wegweiser zu Markdown-Installationsseiten und Daten.
+- [llms-full.txt](https://openrootdev.github.io/harness-library/llms-full.txt): zusammengefasster öffentlicher Text.
+- [catalog.json](https://openrootdev.github.io/harness-library/catalog.json): geprüfte Einträge, kanonische Seiten-URLs, Installation, manuelle Einrichtung und Belege mit definiertem Umfang.
 - Jede kanonische HTML-Seite hat ein entsprechendes `index.md`, verlinkt mit `rel="alternate" type="text/markdown"`.
 
 Jede HTML-Seite besitzt einen eindeutigen Titel, eine Beschreibung und eine kanonische URL, Metadaten für soziale Vorschauen und passendes JSON-LD. Strukturierte Daten beschreiben das tatsächliche Verzeichnis, den Maintainer und die Harnesses; sie erfinden keine Bewertungen, Downloads oder universelle Kompatibilität. Unbekannte Pfade liefern den GitHub-Pages-Status 404 über die noindex-Fehlerseite. Alte Hash-Links für Einträge werden weiterhin unterstützt.
 
 ## Einrichtung durch den Eigentümer
 
-1. Fügen Sie in [Google Search Console](https://search.google.com/search-console) eine **URL-Präfix-Property** für `https://kaelux-labs.github.io/harness-library/` hinzu. Das begrenzt die Property auf das Projekt. Nutzen Sie die für Ihr Konto angebotene Verifizierungsmethode; eine HTML-Verifizierungsdatei kann in `site/` abgelegt werden, sobald ihr exakter Dateiname und Inhalt vorliegen.
+1. Fügen Sie in [Google Search Console](https://search.google.com/search-console) eine **URL-Präfix-Property** für `https://openrootdev.github.io/harness-library/` hinzu. Das begrenzt die Property auf das Projekt. Nutzen Sie die für Ihr Konto angebotene Verifizierungsmethode; eine HTML-Verifizierungsdatei kann in `site/` abgelegt werden, sobald ihr exakter Dateiname und Inhalt vorliegen.
 2. Reichen Sie `sitemap.xml` in dieser Property ein. Prüfen Sie Startseite, Einreichungsleitfaden und Harness-URLs; beantragen Sie Indexierung, wenn das Werkzeug sie anbietet. Eine Einreichung ist ein Hinweis zur Entdeckung, keine Indexierungsgarantie.
 3. Fügen Sie dieselbe Website in [Bing Webmaster Tools](https://www.bing.com/webmasters/) hinzu und reichen Sie die Sitemap ein. Falls das Konto Import aus Google Search Console anbietet, kann die verifizierte Property wiederverwendet werden.
 4. Sehen Sie die Indexierungsberichte nach dem Deployment erneut durch. Beheben Sie gemeldete Crawl- oder Inhaltsprobleme anhand von Belegen. Betrachten Sie weder eine `site:`-Suche noch einen Lighthouse-Wert als Beweis für Indexierungsabdeckung oder Rankings.
@@ -32,13 +34,13 @@ Für eine bewusste Inhaltsänderung außerhalb des Workflows führen Sie zuerst 
 
 ## GitHub Pages und robots.txt
 
-Robots-Regeln für das Verzeichnis werden von der **Host-Wurzel** `https://kaelux-labs.github.io/robots.txt` gelesen, nicht von `/harness-library/robots.txt`. Bei der Prüfung am 10. Oktober 2026 lieferte die Host-Wurzel-URL der Organisation 404; laut dokumentierter Behandlung durch Google bedeutet dies keine Crawl-Einschränkung. Die `robots.txt` dieses Projekts ist eine Referenz mit der Sitemap-URL, keine Steuerdatei für den gemeinsamen Host `kaelux-labs.github.io`. Reichen Sie die Sitemap über Webmaster-Konten ein, statt sich auf diese Referenz zu verlassen.
+Robots-Regeln werden im **Host-Stammverzeichnis** unter `https://openrootdev.github.io/robots.txt` gelesen, nicht unter `/harness-library/robots.txt`. Eine projektlokale Datei steuert das Crawling des gemeinsamen Hosts nicht. Die Projektdatei verweist nur auf die aktuelle Sitemap. Reichen Sie die Sitemap über Webmaster-Konten ein.
 
 Fügt der Eigentümer später ein Root-Site-Repository oder eine eigene Domain hinzu, prüfen Sie die maßgebliche Robots-Datei vor der Einführung von Einschränkungen. Ändern Sie Regeln anderer Projekte auf demselben Host niemals leichtfertig.
 
 ## Migration zur Organisation
 
-Repository und Verzeichnis wurden am 10. Oktober 2026 zu [Kaelux Labs](https://github.com/Kaelux-Labs/harness-library) verschoben. GitHub leitet die alte Repository-URL um. Ein kleines [Pages-Repository des Kontos](https://github.com/Ker102/ker102.github.io) erhält die alten Verzeichnisseiten mit sofortigen Weiterleitungen und kanonischen Links und liefert bestehende Badge-Bilder weiter aus. Seine `robots.txt` an der Host-Wurzel erlaubt Crawling und verlinkt die aktuelle Sitemap.
+Repository und Verzeichnis wurden am 10. Oktober 2026 zu [Kaelux Labs](https://github.com/OpenRootdev/harness-library) verschoben. GitHub leitet die alte Repository-URL um. Ein kleines [Pages-Repository des Kontos](https://github.com/Ker102/ker102.github.io) erhält die alten Verzeichnisseiten mit sofortigen Weiterleitungen und kanonischen Links und liefert bestehende Badge-Bilder weiter aus. Seine `robots.txt` an der Host-Wurzel erlaubt Crawling und verlinkt die aktuelle Sitemap.
 
 Bestehende Badge-Rücklinks mit alter oder aktueller Verzeichnis-URL bleiben berechtigt. Eine Änderung dieser Links startet einen bestehenden 14-Tage-Boost nicht neu; die ursprünglichen Nachweisdaten bleiben maßgeblich.
 

@@ -2,15 +2,15 @@
 <h1 align="center">Harness Library</h1>
 <p align="center"><a href="../../../README.md">English</a> · <a href="../es/README.md">Español</a> · <a href="../zh-CN/README.md">简体中文</a> · <a href="../fr/README.md">Français</a> · <a href="../ja/README.md">日本語</a> · <a href="../de/README.md">Deutsch</a> · <a href="README.md">Português (Brasil)</a></p>
 <p align="center">Descubra, instale e compartilhe harnesses reutilizáveis para agentes.</p>
-<p align="center"><a href="https://kaelux-labs.github.io/harness-library/">Explorar a biblioteca</a> · <a href="https://github.com/Kaelux-Labs/harness-library/issues/new?template=submit-harness.yml">Enviar um harness</a> · <a href="CONTRIBUTING.md">Guia de envio</a></p>
+<p align="center"><a href="https://openrootdev.github.io/harness-library/">Explorar a biblioteca</a> · <a href="https://github.com/OpenRootdev/harness-library/issues/new?template=submit-harness.yml">Enviar um harness</a> · <a href="CONTRIBUTING.md">Guia de envio</a></p>
 
 Um diretório aberto de instruções, habilidades, ferramentas e fluxos de trabalho que ajudam um agente a executar bem uma tarefa específica. Um harness pode consistir em poucos arquivos ou em uma configuração de ferramentas mais ampla. Cada entrada explica como instalá-lo, o que configurar manualmente e qual parte do repositório de origem é necessária.
 
-As primeiras entradas são [Smooth Motion Graphics](https://github.com/Ker102/smooth-motion-graphics) e [ViperMesh for Blender](https://github.com/Ker102/vipermesh-blender). O repositório e os lançamentos existentes do ViperMesh são listados sem alterações. Harneloop é opcional; harnesses criados com ele podem exibir essa atribuição após a revisão.
+As primeiras entradas são [Smooth Motion Graphics](https://github.com/Ker102/smooth-motion-graphics) e [ViperMesh for Blender](https://github.com/OpenRootdev/vipermesh-blender). O repositório e os lançamentos existentes do ViperMesh são listados sem alterações. Harneloop é opcional; harnesses criados com ele podem exibir essa atribuição após a revisão.
 
 ## Veja um harness em ação
 
-O vídeo explicativo do Harneloop mostra o estilo de animação por trás do [harness Smooth Motion Graphics](https://kaelux-labs.github.io/harness-library/harnesses/smooth-motion-graphics/) da biblioteca: cenas legíveis, conexões curvas e transições suaves. Ele também explica como o Harneloop constrói e melhora unidades de harness.
+O vídeo explicativo do Harneloop mostra o estilo de animação por trás do [harness Smooth Motion Graphics](https://openrootdev.github.io/harness-library/harnesses/smooth-motion-graphics/) da biblioteca: cenas legíveis, conexões curvas e transições suaves. Ele também explica como o Harneloop constrói e melhora unidades de harness.
 
 <p align="center"><a href="https://harneloop.kaelux.dev/media/harneloop-how-it-works.mp4"><img src="https://harneloop.kaelux.dev/media/harneloop-video-poster.png" alt="Assista à demonstração silenciosa de motion graphics do Harneloop" width="860"></a></p>
 <p align="center"><a href="https://harneloop.kaelux.dev/media/harneloop-how-it-works.mp4">Assista ao vídeo completo · 3:40 · Sem som, com explicações na tela</a></p>
@@ -21,11 +21,11 @@ O vídeo é hospedado separadamente. Acesse o pacote de instalação do próprio
 
 **Novos envios são bem-vindos.** Procuramos harnesses úteis para programação, pesquisa, dados, trabalho criativo, Blender e operações. Algumas habilidades podem ser suficientes; não é necessário usar Harneloop.
 
-1. [Abra o formulário curto de envio no GitHub](https://github.com/Kaelux-Labs/harness-library/issues/new?template=submit-harness.yml) e informe seu repositório e a tarefa que ele ajuda um agente a realizar.
+1. [Abra o formulário curto de envio no GitHub](https://github.com/OpenRootdev/harness-library/issues/new?template=submit-harness.yml) e informe seu repositório e a tarefa que ele ajuda um agente a realizar.
 2. Inclua passos claros de instalação, categoria, licença, escopo de versão/distribuição e qualquer configuração manual. Contagens de componentes e evidências de testes são opcionais.
 3. Um mantenedor revisa a configuração, pede esclarecimentos na sua issue se necessário e publica as entradas aprovadas.
 
-**Não é necessário fazer fork, abrir pull request ou ter uma conta do Harness Library.** O formulário exige uma conta do GitHub. Você também pode enviar uma PR adicionando um arquivo JSON a `data/listings/`. Veja o [guia público de envio](https://kaelux-labs.github.io/harness-library/submit/), [CONTRIBUTING.md](CONTRIBUTING.md) e [o modelo](../../../docs/listing.example.json).
+**Não é necessário fazer fork, abrir pull request ou ter uma conta do Harness Library.** O formulário exige uma conta do GitHub. Você também pode enviar uma PR adicionando um arquivo JSON a `data/listings/`. Veja o [guia público de envio](https://openrootdev.github.io/harness-library/submit/), [CONTRIBUTING.md](CONTRIBUTING.md) e [o modelo](../../../docs/listing.example.json).
 
 Um repositório com conteúdo misto deve fornecer um pacote específico ou uma branch dedicada ao harness. Quem envia não define rótulos de verificação ou promoção. Os mantenedores revisam configuração, escopo e eventuais evidências antes de publicar a entrada. “Artifacts checked” significa que os artefatos documentados foram inspecionados; não implica que todos os modelos, plataformas ou casos de uso funcionem.
 

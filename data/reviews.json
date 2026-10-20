@@ -2,6 +2,6 @@
   "schema_version":1,
   "reviews":{
     "smooth-motion-graphics":{"reviewed_at":"2026-10-10","status":"artifact-checked","built_with_harneloop":true,"evidence":"Windows: fictional example and alternate brand frames inspected; layout/direction tests and 1080p60 encode/decode checked. Other platforms not runtime-tested.","url":"https://github.com/Ker102/smooth-motion-graphics#what-gets-checked"},
-    "vipermesh-blender":{"reviewed_at":"2026-10-10","status":"setup-reviewed","built_with_harneloop":false,"evidence":"Existing release assets, README installation and skill references reviewed. A live Blender bridge was not retested for this listing.","url":"https://github.com/Ker102/vipermesh-blender/releases/tag/v1.3.0"}
+    "vipermesh-blender":{"reviewed_at":"2026-10-10","status":"setup-reviewed","built_with_harneloop":false,"evidence":"Existing release assets, README installation and skill references reviewed. A live Blender bridge was not retested for this listing.","url":"https://github.com/OpenRootdev/vipermesh-blender/releases/tag/v1.3.0"}
   }
 }

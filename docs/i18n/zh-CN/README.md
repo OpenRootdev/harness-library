@@ -2,15 +2,15 @@
 <h1 align="center">Harness Library</h1>
 <p align="center"><a href="../../../README.md">English</a> · <a href="../es/README.md">Español</a> · <a href="README.md">简体中文</a> · <a href="../fr/README.md">Français</a> · <a href="../ja/README.md">日本語</a> · <a href="../de/README.md">Deutsch</a> · <a href="../pt-BR/README.md">Português (Brasil)</a></p>
 <p align="center">发现、安装并分享可复用的智能体 harness。</p>
-<p align="center"><a href="https://kaelux-labs.github.io/harness-library/">浏览库目录</a> · <a href="https://github.com/Kaelux-Labs/harness-library/issues/new?template=submit-harness.yml">提交 harness</a> · <a href="CONTRIBUTING.md">提交指南</a></p>
+<p align="center"><a href="https://openrootdev.github.io/harness-library/">浏览库目录</a> · <a href="https://github.com/OpenRootdev/harness-library/issues/new?template=submit-harness.yml">提交 harness</a> · <a href="CONTRIBUTING.md">提交指南</a></p>
 
 这是一个开放目录，收录帮助智能体完成特定任务的指令、技能、工具和工作流。harness 可以只是几个文件，也可以是一套更完整的工具配置。每个条目都说明安装方式、需要手动配置的内容，以及所需的源代码仓库范围。
 
-首批条目为 [Smooth Motion Graphics](https://github.com/Ker102/smooth-motion-graphics) 和 [ViperMesh for Blender](https://github.com/Ker102/vipermesh-blender)。ViperMesh 的现有仓库和发布版本保持不变。Harneloop 并非必需；使用它构建的 harness 可在审核后展示相关署名。
+首批条目为 [Smooth Motion Graphics](https://github.com/Ker102/smooth-motion-graphics) 和 [ViperMesh for Blender](https://github.com/OpenRootdev/vipermesh-blender)。ViperMesh 的现有仓库和发布版本保持不变。Harneloop 并非必需；使用它构建的 harness 可在审核后展示相关署名。
 
 ## 查看 harness 的实际效果
 
-Harneloop 讲解视频展示了库中 [Smooth Motion Graphics harness](https://kaelux-labs.github.io/harness-library/harnesses/smooth-motion-graphics/) 的动画风格：清晰易读的场景、曲线连接和舒缓的过渡。视频也解释了 Harneloop 如何构建和改进 harness 单元。
+Harneloop 讲解视频展示了库中 [Smooth Motion Graphics harness](https://openrootdev.github.io/harness-library/harnesses/smooth-motion-graphics/) 的动画风格：清晰易读的场景、曲线连接和舒缓的过渡。视频也解释了 Harneloop 如何构建和改进 harness 单元。
 
 <p align="center"><a href="https://harneloop.kaelux.dev/media/harneloop-how-it-works.mp4"><img src="https://harneloop.kaelux.dev/media/harneloop-video-poster.png" alt="观看无声的 Harneloop 动态图形演示" width="860"></a></p>
 <p align="center"><a href="https://harneloop.kaelux.dev/media/harneloop-how-it-works.mp4">观看完整视频 · 3:40 · 无声，附屏幕文字讲解</a></p>
@@ -21,11 +21,11 @@ Harneloop 讲解视频展示了库中 [Smooth Motion Graphics harness](https://k
 
 **欢迎提交新条目。** 我们希望收录适用于编程、研究、数据、创作、Blender 和运维的实用 harness。几个技能也可能足够；不要求使用 Harneloop。
 
-1. [打开简短的 GitHub 提交表单](https://github.com/Kaelux-Labs/harness-library/issues/new?template=submit-harness.yml)，填写仓库及其帮助智能体完成的任务。
+1. [打开简短的 GitHub 提交表单](https://github.com/OpenRootdev/harness-library/issues/new?template=submit-harness.yml)，填写仓库及其帮助智能体完成的任务。
 2. 提供清晰的安装步骤、类别、许可证、版本与分发范围，以及所有手动设置要求。组件数量和测试证据为可选内容。
 3. 维护者审核配置，必要时在你的 issue 中跟进，并发布获批条目。
 
-**不需要 fork、pull request 或 Harness Library 账号。** 使用表单需要 GitHub 账号。也可以通过 PR 在 `data/listings/` 中添加一个 JSON 文件。参见[公开提交指南](https://kaelux-labs.github.io/harness-library/submit/)、[CONTRIBUTING.md](CONTRIBUTING.md) 和[模板](../../../docs/listing.example.json)。
+**不需要 fork、pull request 或 Harness Library 账号。** 使用表单需要 GitHub 账号。也可以通过 PR 在 `data/listings/` 中添加一个 JSON 文件。参见[公开提交指南](https://openrootdev.github.io/harness-library/submit/)、[CONTRIBUTING.md](CONTRIBUTING.md) 和[模板](../../../docs/listing.example.json)。
 
 包含混合内容的仓库必须提供专门的安装包或独立的 harness 分支。提交者不能设置验证或推广标签。维护者会在发布条目前审核配置、范围和任何证据。“Artifacts checked”表示已检查文档所列的产物；并不意味着所有模型、平台或使用场景都能正常运行。
 

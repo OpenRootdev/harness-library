@@ -9,12 +9,12 @@
 例：
 
 ```md
-[![Listed in Harness Library](https://kaelux-labs.github.io/harness-library/badges/your-slug.svg)](https://kaelux-labs.github.io/harness-library/harnesses/your-slug/)
+[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
 ```
 
 正確な Markdown または同等のリンク付き HTML 画像に対応しています。画像の代替テキストは「Listed in Harness Library」である必要があります。コードフェンスや HTML コメント内の例は対象になりません。
 
-以前発行された `https://kaelux-labs.github.io/harness-library/#your-slug` へのリンクも引き続き対象で、対応するページに移動します。新しいバッジには実際のページ URL を使ってください。
+以前発行された `https://openrootdev.github.io/harness-library/#your-slug` へのリンクも引き続き対象で、対応するページに移動します。新しいバッジには実際のページ URL を使ってください。
 
 有効な掲載項目は通常の項目より先に表示され、それぞれのグループ内でアルファベット順に並びます。検索とカテゴリのフィルターは引き続き適用されます。ディレクトリの詳細ページに **Community boost** ラベルと期限を表示します。これは宣伝目的の配置であり、審査状況や品質に関する主張は独立しています。
 

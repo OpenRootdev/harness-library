@@ -9,12 +9,12 @@
 示例：
 
 ```md
-[![Listed in Harness Library](https://kaelux-labs.github.io/harness-library/badges/your-slug.svg)](https://kaelux-labs.github.io/harness-library/harnesses/your-slug/)
+[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
 ```
 
 支持原样 Markdown 或等效的带链接 HTML 图片。图片替代文本必须为“Listed in Harness Library”。代码围栏或 HTML 注释中的示例不符合资格。
 
-此前发放的 `https://kaelux-labs.github.io/harness-library/#your-slug` 回链仍符合资格，并会导航到对应页面。新徽章应使用实际页面 URL。
+此前发放的 `https://openrootdev.github.io/harness-library/#your-slug` 回链仍符合资格，并会导航到对应页面。新徽章应使用实际页面 URL。
 
 有效推广条目显示在普通条目之前，每组内部按字母顺序排序。搜索和类别筛选仍然有效。目录在详情页显示 **Community boost** 标签及到期时间。这是推广展示位置；审核状态和质量声明与之独立。
 

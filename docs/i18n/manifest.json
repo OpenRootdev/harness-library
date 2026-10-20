@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_language": "en",
-  "canonical_repository": "https://github.com/Kaelux-Labs/harness-library",
+  "canonical_repository": "https://github.com/OpenRootdev/harness-library",
   "hash_algorithm": "sha256",
   "hash_normalization": "UTF-8 text with CRLF normalized to LF; no other whitespace normalization",
   "locales": [
@@ -84,37 +84,37 @@
   "sources": [
     {
       "path": "README.md",
-      "sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b",
+      "sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         },
         "fr": {
           "path": "docs/i18n/fr/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         },
         "ja": {
           "path": "docs/i18n/ja/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         },
         "de": {
           "path": "docs/i18n/de/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/README.md",
           "status": "complete",
-          "source_sha256": "d65b24dc09e8ed14e25eecff7e49a079485302588690b96ddf1aad707bc1ab3b"
+          "source_sha256": "f5d96bdf083e8e904991323cad186b4af6d4e55dbd2d36b4d091e967c9cc15b7"
         }
       }
     },
@@ -156,73 +156,73 @@
     },
     {
       "path": "docs/badge-program.md",
-      "sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f",
+      "sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         },
         "fr": {
           "path": "docs/i18n/fr/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         },
         "ja": {
           "path": "docs/i18n/ja/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         },
         "de": {
           "path": "docs/i18n/de/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/docs/badge-program.md",
           "status": "complete",
-          "source_sha256": "a4e4557f8d483adcc9be4534b9f8bf31db639e20ba7f3cd526d44e2ef614f09f"
+          "source_sha256": "4ab3384b13ab23e07d1d6e79778ca1b9cfb89ac1e97e40f64f326b3bf58f7a60"
         }
       }
     },
     {
       "path": "docs/discovery.md",
-      "sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f",
+      "sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         },
         "fr": {
           "path": "docs/i18n/fr/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         },
         "ja": {
           "path": "docs/i18n/ja/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         },
         "de": {
           "path": "docs/i18n/de/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d6adf0b918262207693736f6b71dee4eb3293320f71e8532687de038da5b913f"
+          "source_sha256": "739f4a9af9c28d3c57d355ee729e5e2f4946ca29a9ed16baea7aa0f76a4d2a31"
         }
       }
     }

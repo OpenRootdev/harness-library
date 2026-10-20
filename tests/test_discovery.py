@@ -12,7 +12,7 @@ def sitemap(url):
 
 class DiscoveryTests(unittest.TestCase):
     def test_notification_scope_cannot_escape_the_project(self):
-        for url in ['https://example.com/','https://ker102.github.io/other/','https://kaelux-labs.github.io/harness-library/../other/','https://kaelux-labs.github.io/harness-library/%2e%2e/other/','https://kaelux-labs.github.io/harness-library/#private','https://kaelux-labs.github.io/harness-library/?secret=value']:
+        for url in ['https://example.com/','https://ker102.github.io/other/','https://openrootdev.github.io/harness-library/../other/','https://openrootdev.github.io/harness-library/%2e%2e/other/','https://openrootdev.github.io/harness-library/#private','https://openrootdev.github.io/harness-library/?secret=value']:
             with self.assertRaises(ValueError):n.payload(sitemap(url),'abcdefgh12345678')
         result=n.payload(sitemap(c.SITE),'abcdefgh12345678')
         self.assertEqual(result['urlList'],[c.SITE]);self.assertEqual(result['keyLocation'],c.SITE+n.KEY_FILE)

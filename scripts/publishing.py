@@ -6,9 +6,9 @@ import re
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-SITE = 'https://kaelux-labs.github.io/harness-library/'
+SITE = 'https://openrootdev.github.io/harness-library/'
 BASE = '/harness-library/'
-REPOSITORY = 'https://github.com/Kaelux-Labs/harness-library'
+REPOSITORY = 'https://github.com/OpenRootdev/harness-library'
 FORM = REPOSITORY + '/issues/new?template=submit-harness.yml'
 DEFINITION = ('An agent harness is the surrounding setup that lets an AI model act on a task. '
               'It can include instructions, skills, tools, environment mappings, checks and workflows. '
