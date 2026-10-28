@@ -1,14 +1,18 @@
 # 提交 harness
 
+ToolIndex 收录 AI 智能体可使用的各种工具：技能、MCP 服务器、CLI、API、库、插件、工作流和 harness。托管服务和商业工具也可提交，但必须说明访问方式、价格、身份验证和使用条款。每个条目都直接链接到源代码仓库或官方文档。
+
+标志或自定义图片是可选的。如提供图片，请附上来源和替代文本；否则条目会显示中性的名称首字母。请选择工具类型，并说明安装或服务访问步骤。允许 GitHub 以外的来源；目前只有 GitHub README 支持自动徽章检查。
+
 **欢迎提交新条目。** 我们希望收录实用、可复用的智能体配置，包括小型技能文件夹。Harneloop 并非必需。
 
 最简单的提交方式不需要 fork 或 pull request：
 
-1. [打开 GitHub 提交表单](https://github.com/Ker102/harness-library/issues/new?template=submit-harness.yml)。提供仓库、名称和任务/类别。
+1. [打开 GitHub 提交表单](https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml)。提供仓库、名称和任务/类别。
 2. 说明安装方法、专门的分发内容、版本/许可证和手动连接要求。额外的组成细节和测试证据为可选内容。
 3. 维护者审核你的 issue，必要时在其中要求补充信息，并发布获批条目。后续变更可以通过另一个 issue 或 PR 提交。
 
-使用表单只需要 GitHub 账号。[网站指南](https://ker102.github.io/harness-library/submit/) 说明了相同流程。
+使用表单只需要 GitHub 账号。[网站指南](https://toolindex.org/submit/) 说明了相同流程。
 
 如使用 PR，将 `docs/listing.example.json` 复制为 `data/listings/your-slug.json`。文件名与 `id` 必须使用相同的小写 slug。运行 `python scripts/catalog.py validate` 以及 README 中说明的测试。
 

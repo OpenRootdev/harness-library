@@ -1,4 +1,4 @@
-# Listed in Harness Library：免费的 14 天社区推广
+# Listed in ToolIndex：免费的 14 天社区推广
 
 此计划奖励帮助人们发现可复用 harness 的贡献者。无需付费，也不要求使用 Harneloop。
 
@@ -9,12 +9,12 @@
 示例：
 
 ```md
-[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
+[![Listed in ToolIndex](https://toolindex.org/badges/your-slug.svg)](https://toolindex.org/tools/your-slug/)
 ```
 
-支持原样 Markdown 或等效的带链接 HTML 图片。图片替代文本必须为“Listed in Harness Library”。代码围栏或 HTML 注释中的示例不符合资格。
+支持原样 Markdown 或等效的带链接 HTML 图片。图片替代文本必须为“Listed in ToolIndex”。代码围栏或 HTML 注释中的示例不符合资格。
 
-此前发放的 `https://openrootdev.github.io/harness-library/#your-slug` 回链仍符合资格，并会导航到对应页面。新徽章应使用实际页面 URL。
+此前发放的 `https://toolindex.org/#your-slug` 回链仍符合资格，并会导航到对应页面。新徽章应使用实际页面 URL。
 
 有效推广条目显示在普通条目之前，每组内部按字母顺序排序。搜索和类别筛选仍然有效。目录在详情页显示 **Community boost** 标签及到期时间。这是推广展示位置；审核状态和质量声明与之独立。
 
@@ -24,4 +24,8 @@
 
 到期后仍可保留徽章。任何新政策都将公开讨论；不存在隐藏的定期推广或付费排名。
 
-迁移到 Kaelux Labs 之前，在 `https://ker102.github.io/harness-library/` 发放的徽章仍符合资格。迁移不会重新开始原始的 14 天窗口。方便时，请将图片和回链一并更新为新的规范地址。
+迁移到 Kaelux Labs 之前，在 `https://toolindex.org/` 发放的徽章仍符合资格。迁移不会重新开始原始的 14 天窗口。方便时，请将图片和回链一并更新为新的规范地址。
+
+ToolIndex 收录 AI 智能体可使用的各种工具：技能、MCP 服务器、CLI、API、库、插件、工作流和 harness。托管服务和商业工具也可提交，但必须说明访问方式、价格、身份验证和使用条款。每个条目都直接链接到源代码仓库或官方文档。
+
+标志或自定义图片是可选的。如提供图片，请附上来源和替代文本；否则条目会显示中性的名称首字母。请选择工具类型，并说明安装或服务访问步骤。允许 GitHub 以外的来源；目前只有 GitHub README 支持自动徽章检查。

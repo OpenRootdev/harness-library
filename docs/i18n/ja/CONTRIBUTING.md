@@ -1,14 +1,18 @@
 # harness を投稿する
 
+ToolIndex は、AI エージェントが使えるあらゆるツールを扱います。スキル、MCP サーバー、CLI、API、ライブラリ、プラグイン、ワークフロー、ハーネスが対象です。ホスト型サービスや商用ツールも、アクセス方法、料金、認証、利用条件が明確なら提出できます。各掲載ページはソースリポジトリまたは公式ドキュメントに直接リンクします。
+
+ロゴやカスタム画像は任意です。使用する場合は出典と代替テキストを記載してください。画像がない場合は中立的な頭文字を表示します。ツールの種類を選び、インストールまたはサービス接続手順を説明してください。GitHub 以外のソースも受け付けますが、README バッジの自動確認は現在 GitHub のみ対応しています。
+
 **新しい投稿を歓迎します。** 小さなスキルフォルダーを含め、実用的で再利用可能なエージェント設定を募集しています。Harneloop の使用は任意です。
 
 最も簡単な方法では、fork や pull request は不要です。
 
-1. [GitHub 投稿フォーム](https://github.com/Ker102/harness-library/issues/new?template=submit-harness.yml)を開きます。リポジトリ、名前、タスク・カテゴリを共有してください。
+1. [GitHub 投稿フォーム](https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml)を開きます。リポジトリ、名前、タスク・カテゴリを共有してください。
 2. インストール方法、用途を絞った配布内容、バージョン・ライセンス、手動接続を説明します。追加の構成情報やテストの証拠は任意です。
 3. メンテナーが issue を審査し、必要ならその issue で不足情報を求め、承認した項目を公開します。後の変更は別の issue または PR で投稿できます。
 
-フォームを使うには GitHub アカウントだけが必要です。[ウェブサイトのガイド](https://ker102.github.io/harness-library/submit/)にも同じ手順を説明しています。
+フォームを使うには GitHub アカウントだけが必要です。[ウェブサイトのガイド](https://toolindex.org/submit/)にも同じ手順を説明しています。
 
 PR の場合は、`docs/listing.example.json` を `data/listings/your-slug.json` にコピーします。ファイル名と `id` には同じ小文字の slug を使ってください。`python scripts/catalog.py validate` と README に記載されたテストを実行します。
 

@@ -1,14 +1,26 @@
 {
-  "schema_version":1,
-  "id":"your-harness",
-  "name":"Your Harness",
-  "summary":"The specific task this harness helps an agent do.",
-  "category":"Other",
-  "repository":"https://github.com/your-account/your-harness",
-  "license":"MIT",
-  "version":"1.0.0",
-  "distribution":{"kind":"package","url":"https://github.com/your-account/your-harness/releases/download/v1.0.0/harness.zip","label":"Download harness","scope":"Describe exactly which relevant files are included.","repository_has_extra_material":true},
-  "installation":[{"title":"Install the package","body":"Describe prerequisites, extraction, working directory, agent integration and the first useful action."}],
-  "manual_setup":[],
-  "notes":[]
+  "schema_version": 1,
+  "id": "your-tool",
+  "name": "Your Tool",
+  "summary": "The specific task this tool helps an AI agent do.",
+  "category": "Other",
+  "repository": "https://github.com/your-account/your-tool",
+  "license": "MIT",
+  "version": "1.0.0",
+  "distribution": {
+    "kind": "package",
+    "url": "https://github.com/your-account/your-tool/releases/download/v1.0.0/tool.zip",
+    "label": "Download tool",
+    "scope": "Describe exactly which relevant files are included.",
+    "repository_has_extra_material": true
+  },
+  "installation": [
+    {
+      "title": "Install the package",
+      "body": "Describe prerequisites, extraction, working directory, agent integration and the first useful action."
+    }
+  ],
+  "manual_setup": [],
+  "notes": [],
+  "type": "Skill"
 }

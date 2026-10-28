@@ -11,7 +11,7 @@ from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY = 'https://github.com/OpenRootdev/harness-library'
+REPOSITORY = 'https://github.com/OpenRootdev/toolindex'
 LOCALES = ('es', 'zh-CN', 'fr', 'ja', 'de', 'pt-BR')
 LABELS = ('English', 'Espa\u00f1ol', '\u7b80\u4f53\u4e2d\u6587', 'Fran\u00e7ais',
           '\u65e5\u672c\u8a9e', 'Deutsch', 'Portugu\u00eas (Brasil)')

@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "toolindex-org",
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "toolindex",
+          "region": "europe-west1"
+        }
+      }
+    ]
+  }
+}

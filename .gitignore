@@ -3,3 +3,6 @@ dist/
 .playwright-cli/
 __pycache__/
 *.pyc
+docs/internal/
+task.md
+implementation-plan.md

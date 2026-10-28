@@ -66,7 +66,7 @@ class TranslationTests(unittest.TestCase):
         switcher = lambda urls: '<p>' + ' | '.join(
             f'<a href="{url}">{label}</a>' for url, label in zip(urls, i18n.LABELS)
         ) + '</p>\n'
-        content = '# Harness Library\n\n' + switcher(targets)
+        content = '# ToolIndex\n\n' + switcher(targets)
         self.write('README.md', content)
         digest = i18n.source_hash(content)
         mirrors = {}
@@ -76,7 +76,7 @@ class TranslationTests(unittest.TestCase):
                 'README.md' if other == locale else f'../{other}/README.md'
                 for other in i18n.LOCALES
             ]
-            self.write(path, '# Harness Library\n\n' + switcher(urls))
+            self.write(path, '# ToolIndex\n\n' + switcher(urls))
             mirrors[locale] = {'path': path, 'status': 'complete', 'source_sha256': digest}
         self.manifest['sources'].append({'path': 'README.md', 'sha256': digest, 'mirrors': mirrors})
         self.save_manifest()
@@ -96,7 +96,7 @@ class TranslationTests(unittest.TestCase):
 
     def test_switcher_is_required_and_labels_are_native(self):
         self.add_readmes()
-        self.write('docs/i18n/es/README.md', '# Harness Library\n')
+        self.write('docs/i18n/es/README.md', '# ToolIndex\n')
         self.assertIn('native-language switcher', self.errors())
 
     def test_invalid_json_and_missing_locale_fail(self):

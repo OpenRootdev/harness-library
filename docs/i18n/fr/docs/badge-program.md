@@ -1,4 +1,4 @@
-# Listed in Harness Library : mise en avant communautaire gratuite de 14 jours
+# Listed in ToolIndex : mise en avant communautaire gratuite de 14 jours
 
 Le programme récompense les contributeurs qui facilitent la découverte de harnesses réutilisables. Il n'y a ni paiement ni obligation d'utiliser Harneloop.
 
@@ -9,12 +9,12 @@ Le programme récompense les contributeurs qui facilitent la découverte de harn
 Exemple :
 
 ```md
-[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
+[![Listed in ToolIndex](https://toolindex.org/badges/your-slug.svg)](https://toolindex.org/tools/your-slug/)
 ```
 
-Le Markdown exact ou une image HTML liée équivalente sont acceptés. Le texte alternatif de l'image doit être « Listed in Harness Library ». Les exemples dans des blocs de code ou des commentaires HTML ne sont pas admissibles.
+Le Markdown exact ou une image HTML liée équivalente sont acceptés. Le texte alternatif de l'image doit être « Listed in ToolIndex ». Les exemples dans des blocs de code ou des commentaires HTML ne sont pas admissibles.
 
-Les anciens liens retour `https://openrootdev.github.io/harness-library/#your-slug` restent admissibles et mènent à la page correspondante. Utilisez l'URL réelle de la page pour les nouveaux badges.
+Les anciens liens retour `https://toolindex.org/#your-slug` restent admissibles et mènent à la page correspondante. Utilisez l'URL réelle de la page pour les nouveaux badges.
 
 Les fiches actives apparaissent avant les fiches ordinaires, puis par ordre alphabétique dans chaque groupe. Les filtres de recherche et de catégorie s'appliquent toujours. L'annuaire affiche un label **Community boost** et son expiration sur la page détaillée. Il s'agit d'un placement promotionnel ; le statut de l'examen et les affirmations de qualité restent indépendants.
 
@@ -24,4 +24,8 @@ Si GitHub est temporairement indisponible, aucune nouvelle mise en avant n'est a
 
 Le badge peut rester après expiration. Toute nouvelle politique serait discutée publiquement ; il n'existe ni promotion récurrente cachée ni classement payant.
 
-Les badges émis avant la migration vers Kaelux Labs à `https://ker102.github.io/harness-library/` restent admissibles. La migration ne relance pas la période initiale de 14 jours. Mettez à jour l'image et le lien retour vers la nouvelle adresse canonique lorsque cela vous convient.
+Les badges émis avant la migration vers Kaelux Labs à `https://toolindex.org/` restent admissibles. La migration ne relance pas la période initiale de 14 jours. Mettez à jour l'image et le lien retour vers la nouvelle adresse canonique lorsque cela vous convient.
+
+ToolIndex accueille tous les outils utilisables par les agents IA : compétences, serveurs MCP, CLI, API, bibliothèques, extensions, workflows et harnesses. Les services hébergés et commerciaux sont acceptés si leur accès, leurs tarifs, leur authentification et leurs conditions sont clairs. Chaque fiche renvoie directement au dépôt source ou à la documentation officielle.
+
+Le logo ou une image personnalisée sont facultatifs. Indiquez leur source et un texte alternatif ; sinon la fiche affiche des initiales neutres. Choisissez un type d’outil et expliquez son installation ou l’accès au service. Les sources hors GitHub sont acceptées ; seuls les README GitHub permettent actuellement la vérification automatique des badges.

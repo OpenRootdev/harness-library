@@ -1,0 +1,41 @@
+name: Refresh ToolIndex catalog
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: toolindex-catalog
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+      - run: python scripts/catalog.py validate
+      - run: python -m unittest discover -s tests -v
+      - name: Verify badges on reviewed main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/catalog.py refresh
+      - name: Persist boost receipts
+        run: |
+          if ! git diff --quiet -- data/boosts.json; then
+            git config user.name "toolindex-bot"
+            git config user.email "toolindex-bot@users.noreply.github.com"
+            git add data/boosts.json
+            git commit -m "Refresh verified community badge receipts"
+            git push
+          fi
+      - run: python scripts/catalog.py build
+      - uses: actions/upload-artifact@v6
+        with:
+          name: toolindex-site
+          path: dist
+          retention-days: 7
