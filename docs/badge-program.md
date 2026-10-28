@@ -1,4 +1,4 @@
-# Listed in Harness Library: free 14-day community boost
+# Listed in ToolIndex: free 14-day community boost
 
 The program rewards contributors for making reusable harnesses easier to discover. There is no payment and no requirement to use Harneloop.
 
@@ -9,12 +9,12 @@ The program rewards contributors for making reusable harnesses easier to discove
 Example:
 
 ```md
-[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
+[![Listed in ToolIndex](https://toolindex.org/badges/your-slug.svg)](https://toolindex.org/tools/your-slug/)
 ```
 
-Exact Markdown or an equivalent linked HTML image is supported. The image alt text must be “Listed in Harness Library”. Examples inside code fences or HTML comments do not qualify.
+Exact Markdown or an equivalent linked HTML image is supported. The image alt text must be “Listed in ToolIndex”. Examples inside code fences or HTML comments do not qualify.
 
-Previously issued `https://openrootdev.github.io/harness-library/#your-slug` backlinks still qualify and navigate to the corresponding page. Use the real page URL for new badges.
+Previously issued `https://toolindex.org/#your-slug` backlinks still qualify and navigate to the corresponding page. Use the real page URL for new badges.
 
 Active listings appear before regular listings, then alphabetically within each group. Search and category filters still apply. The directory shows a **Community boost** label and its expiry on the detail page. This is promotional placement; review status and quality claims remain independent.
 
@@ -24,4 +24,8 @@ If GitHub is temporarily unavailable, no new boost is awarded. Existing checked 
 
 The badge can stay after expiry. A new policy would be discussed publicly; there is no hidden recurring promotion or paid ranking.
 
-Badges issued before the Kaelux Labs migration at `https://ker102.github.io/harness-library/` still qualify. Migration does not restart the original 14-day window. Update both the image and backlink to the new canonical address when convenient.
+Badges issued before the Kaelux Labs migration at `https://toolindex.org/` still qualify. Migration does not restart the original 14-day window. Update both the image and backlink to the new canonical address when convenient.
+
+ToolIndex includes any tool AI agents can use: skills, MCP servers, CLIs, APIs, libraries, plugins, workflows and harnesses. Hosted and commercial tools are welcome when access, pricing, authentication and terms are clear. Every listing links directly to its source repository or official documentation.
+
+A logo or custom image is optional. Supply its source and alt text if available; otherwise the listing uses neutral initials. Choose a tool type and explain installation or service access. Non-GitHub sources are accepted; automatic README badge checks currently support GitHub only.

@@ -1,0 +1,86 @@
+name: Submit a tool
+description: Share a reusable agent tool with clear setup instructions.
+title: "[Tool] "
+labels: [submission]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **New submissions are welcome ; a useful skill folder can be enough.**
+        Share your repository and setup below. No fork, pull request or Harneloop dependency is required.
+        A maintainer reviews the instructions and package scope, asks questions here if needed, and publishes approved listings.
+        [Read the short submission guide](https://toolindex.org/submit/).
+  - type: input
+    id: name
+    attributes:
+      label: Tool name
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Source repository or official documentation
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Purpose and category
+      description: "What job does it help an agent do? Suggested category: Creative, 3D & Blender, Coding, Research, Data, Operations or Other."
+    validations:
+      required: true
+  - type: textarea
+    id: install
+    attributes:
+      label: Installation or connection instructions
+      description: Include ordered steps, prerequisites, working directory, agent/client integration and first use.
+    validations:
+      required: true
+  - type: textarea
+    id: distribution
+    attributes:
+      label: Focused distribution, version and license
+      description: Link the package or focused source or service/API endpoint. If the repo contains unrelated material, specify how users install only the relevant tool. Include license/attribution requirements.
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Manual connections and additional notes
+      description: Tools, MCPs, credentials or manual setup required. Write 'none' where appropriate. Do not include secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: contents
+    attributes:
+      label: Optional composition and evidence
+      description: Skills, files, references, top-level tools, tested artifacts/platforms, and Built with Harneloop evidence if applicable.
+  - type: dropdown
+    id: tool_type
+    attributes:
+      label: Tool type
+      options:
+        - Skill
+        - MCP server
+        - CLI
+        - API
+        - Library
+        - Plugin
+        - Workflow
+        - Harness
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: image
+    attributes:
+      label: Logo or custom image (optional)
+      description: Link an image you may use, its source and alt text. Leave blank for neutral initials.
+    validations:
+      required: false
+  - type: textarea
+    id: service_terms
+    attributes:
+      label: Pricing, authentication and service terms (if applicable)
+      description: Disclose required accounts, costs, API scopes, rate limits and usage terms. Do not submit credentials.

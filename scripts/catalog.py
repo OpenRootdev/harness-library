@@ -13,7 +13,7 @@ from urllib.request import Request, urlopen
 import os
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE = 'https://openrootdev.github.io/harness-library/'
+from site_config import SITE, TOOL_TYPES, LEGACY_SITES
 CATEGORIES = ['Creative', '3D & Blender', 'Coding', 'Research', 'Data', 'Operations', 'Other']
 REPO = re.compile(r'https://github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)\Z')
 SLUG = re.compile(r'[a-z0-9]+(?:-[a-z0-9]+)*\Z')
@@ -41,7 +41,7 @@ def text(value, field):
         raise ValueError(f'{field} needs nonempty text (max 5000 characters)')
 
 def validate_entry(e):
-    allowed = {'schema_version','id','name','summary','category','repository','license','version','distribution','installation','manual_setup','notes','contents','harneloop','documentation'}
+    allowed = {'schema_version','id','name','summary','category','repository','license','version','distribution','installation','manual_setup','notes','contents','harneloop','documentation','type','image'}
     if not isinstance(e, dict) or set(e) - allowed:
         raise ValueError('Unknown listing fields; review/boost labels are maintainer-owned')
     if e.get('schema_version') != 1 or not SLUG.fullmatch(e.get('id','')):
@@ -50,13 +50,26 @@ def validate_entry(e):
         text(e.get(field), field)
     if e.get('category') not in CATEGORIES:
         raise ValueError('Unknown category')
-    if not REPO.fullmatch(e.get('repository','')):
-        raise ValueError('repository must be a canonical public GitHub repository URL')
+    https(e.get('repository'))
+    if e.get('type', 'Harness') not in TOOL_TYPES:
+        raise ValueError('Unknown tool type')
+    if 'image' in e:
+        image = e['image']
+        if not isinstance(image, dict) or set(image) != {'url','alt','source'}:
+            raise ValueError('Optional image needs url, alt and source')
+        text(image['alt'], 'image alt text')
+        https(image['source'])
+        url = image['url']
+        if isinstance(url, str) and url.startswith('assets/logos/'):
+            if not re.fullmatch(r'assets/logos/[a-z0-9][a-z0-9.-]*\.(?:png|webp|jpg|svg)', url):
+                raise ValueError('Invalid local logo path')
+        else:
+            https(url)
     d = e.get('distribution', {})
     if set(d) - {'kind','url','label','scope','repository_has_extra_material','branch'}:
         raise ValueError('Unknown distribution fields')
-    if d.get('kind') not in {'package','dedicated-branch','focused-repository'}:
-        raise ValueError('Declare a focused package, dedicated harness branch or focused repository')
+    if d.get('kind') not in {'package','dedicated-branch','focused-repository','service','api'}:
+        raise ValueError('Declare a package, dedicated branch, focused repository, service or API')
     if not isinstance(d.get('repository_has_extra_material'), bool):
         raise ValueError('Declare whether the repository has extra material')
     if d['repository_has_extra_material'] and d['kind'] == 'focused-repository':
@@ -146,7 +159,7 @@ class BadgeHTML(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs=dict(attrs)
         if tag=='a': self.link=attrs.get('href')==self.target
-        if tag=='img' and self.link and attrs.get('src')==self.badge and attrs.get('alt','').lower()=='listed in harness library': self.found=True
+        if tag=='img' and self.link and attrs.get('src')==self.badge and attrs.get('alt','').lower() in {'listed in toolindex','listed in harness library'}: self.found=True
     def handle_endtag(self, tag):
         if tag=='a': self.link=False
 
@@ -161,20 +174,21 @@ def has_badge(readme, slug):
     head='\n'.join(clean)
     head=re.sub(r'`+[^`]*`+','',head)
     # Preserve existing grants across the organization migration. New badges use SITE.
-    sites=[SITE,'https://kaelux-labs.github.io/harness-library/','https://ker102.github.io/harness-library/']
+    sites=[SITE,*LEGACY_SITES]
     pairs=[(site+'badges/'+slug+'.svg',target) for site in sites
-           for target in [site+'#'+slug,site+'harnesses/'+slug+'/']]
+           for target in [site+'#'+slug,site+'tools/'+slug+'/',site+'harnesses/'+slug+'/']]
     for badge,target in pairs:
-        md='[![Listed in Harness Library]('+badge+')]('+target+')'
-        if md in head: return True
+        if any('[!['+name+']('+badge+')]('+target+')' in head for name in ['Listed in ToolIndex','Listed in Harness Library']): return True
         parser=BadgeHTML(target,badge);parser.feed(head)
         if parser.found: return True
     return False
 
 def readme(e):
     match=REPO.fullmatch(e['repository'])
+    if not match:
+        raise ValueError('Automatic badge verification currently supports GitHub sources only')
     url=f'https://api.github.com/repos/{match[1]}/{match[2]}/readme'
-    headers={'Accept':'application/vnd.github+json','User-Agent':'Harness-Library-badge-check'}
+    headers={'Accept':'application/vnd.github+json','User-Agent':'ToolIndex-badge-check'}
     if os.environ.get('GITHUB_TOKEN'): headers['Authorization']='Bearer '+os.environ['GITHUB_TOKEN']
     with urlopen(Request(url,headers=headers),timeout=20) as response:
         data=response.read(1_000_001)
@@ -213,12 +227,14 @@ def checked_catalog(root=ROOT, now=None):
         if not review: continue # Only approved listings are published.
         if review['built_with_harneloop'] and 'harneloop' not in e: raise ValueError('Approved attribution needs a source')
         boost=grants.get(e['id']);is_active=active(boost,now)
-        result.append({**e,'url':SITE+'harnesses/'+e['id']+'/','review':review,'boost':boost if is_active else None})
+        if e.get('image',{}).get('url','').startswith('assets/logos/') and not (root/'site'/e['image']['url']).is_file():
+            raise ValueError('Declared local logo is missing')
+        result.append({**e,'type':e.get('type','Harness'),'url':SITE+'tools/'+e['id']+'/','review':review,'boost':boost if is_active else None})
     result.sort(key=lambda e:(not bool(e['boost']),e['name'].casefold()))
     return {'generated_at':iso(now),'categories':CATEGORIES,'listings':result}
 
 def badge(slug):
-    return '<svg xmlns="http://www.w3.org/2000/svg" width="218" height="28" role="img" aria-label="Listed in Harness Library"><title>Listed in Harness Library</title><rect width="218" height="28" rx="5" fill="#252727"/><g transform="translate(7,2) scale(.52)" fill="none" stroke="#ff8243" stroke-width="4.5"><circle cx="17" cy="29" r="12.5"/><circle cx="34" cy="17" r="12.5"/></g><text x="43" y="18" fill="#fff" font-family="Arial,sans-serif" font-size="11">Listed in Harness Library</text></svg>'
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="218" height="28" role="img" aria-label="Listed in ToolIndex"><title>Listed in ToolIndex</title><rect width="218" height="28" rx="5" fill="#252727"/><g transform="translate(7,2) scale(.52)" fill="none" stroke="#ff8243" stroke-width="4.5"><circle cx="17" cy="29" r="12.5"/><circle cx="34" cy="17" r="12.5"/></g><text x="43" y="18" fill="#fff" font-family="Arial,sans-serif" font-size="11">Listed in ToolIndex</text></svg>'
 
 def build(root=ROOT):
     catalog=checked_catalog(root);destination=root/'dist';destination.mkdir(exist_ok=True)

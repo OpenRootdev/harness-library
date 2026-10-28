@@ -1,21 +1,62 @@
 {
-  "schema_version":1,
-  "id":"smooth-motion-graphics",
-  "name":"Smooth Motion Graphics",
-  "summary":"A compact skill for calm, clear brand animations.",
-  "category":"Creative",
-  "repository":"https://github.com/Ker102/smooth-motion-graphics",
-  "license":"MIT",
-  "version":"1.0.0",
-  "distribution":{"kind":"package","url":"https://github.com/Ker102/smooth-motion-graphics/releases/download/v1.0.0/smooth-motion-graphics-v1.0.0.zip","label":"Download skill ZIP","scope":"One skill, reference guide, example brief, renderer and dependency manifests. No videos or dependencies.","repository_has_extra_material":true},
-  "installation":[
-    {"title":"Download the focused package","body":"Download the ZIP and SHA256SUMS.txt from the release. Verify the checksum with your system's checksum tool, then extract into a folder you control.","url":"https://github.com/Ker102/smooth-motion-graphics/releases/tag/v1.0.0","label":"Release and checksums"},
-    {"title":"Point your agent at the skill","body":"Ask any agent to read this file. For an Agent Skills-compatible client, copy the complete skill folder to its documented skills directory. Discovery differs by client.","command":"skills/smooth-motion-graphics/SKILL.md"},
-    {"title":"Optional: render a first preview","body":"Install Node.js 20+ and system FFmpeg for video encoding. From the skill folder, run these commands. Copy and adapt the example brief for your own brand before delivering a video.","command":"npm ci\nnode scripts/render.cjs stills assets/brand-brief.example.json output\nnode scripts/render.cjs video assets/brand-brief.example.json output"}
+  "schema_version": 1,
+  "id": "smooth-motion-graphics",
+  "name": "Smooth Motion Graphics",
+  "summary": "A compact skill for calm, clear brand animations.",
+  "category": "Creative",
+  "repository": "https://github.com/Ker102/smooth-motion-graphics",
+  "license": "MIT",
+  "version": "1.0.0",
+  "distribution": {
+    "kind": "package",
+    "url": "https://github.com/Ker102/smooth-motion-graphics/releases/download/v1.0.0/smooth-motion-graphics-v1.0.0.zip",
+    "label": "Download skill ZIP",
+    "scope": "One skill, reference guide, example brief, renderer and dependency manifests. No videos or dependencies.",
+    "repository_has_extra_material": true
+  },
+  "installation": [
+    {
+      "title": "Download the focused package",
+      "body": "Download the ZIP and SHA256SUMS.txt from the release. Verify the checksum with your system's checksum tool, then extract into a folder you control.",
+      "url": "https://github.com/Ker102/smooth-motion-graphics/releases/tag/v1.0.0",
+      "label": "Release and checksums"
+    },
+    {
+      "title": "Point your agent at the skill",
+      "body": "Ask any agent to read this file. For an Agent Skills-compatible client, copy the complete skill folder to its documented skills directory. Discovery differs by client.",
+      "command": "skills/smooth-motion-graphics/SKILL.md"
+    },
+    {
+      "title": "Optional: render a first preview",
+      "body": "Install Node.js 20+ and system FFmpeg for video encoding. From the skill folder, run these commands. Copy and adapt the example brief for your own brand before delivering a video.",
+      "command": "npm ci\nnode scripts/render.cjs stills assets/brand-brief.example.json output\nnode scripts/render.cjs video assets/brand-brief.example.json output"
+    }
   ],
-  "manual_setup":["No MCP, API key or image model is required. The instructions can be used with your existing animation tools.","Optional reference renderer: Node.js 20+, system FFmpeg with libx264 for encoding, and your own licensed font if desired.","Set SMOOTH_FFMPEG or SMOOTH_FONT_PATH only if using a non-default executable or local font. Inspect preview frames on the machine that will encode the video."],
-  "notes":["Reference layouts: title, 2–4 inputs into a central object, and 3–7 workflow cards with explicit directed edges. Extend them when the story needs a different layout.","Optional Harneloop thin export is available in the release. It is a promoted snapshot for reuse; it does not include private development runs or claim a one-command import.","The example uses fictional Luma branding. Replace the story with verified facts for your product."],
-  "contents":{"skills":1,"references":1,"renderers":1,"files":6,"mcp_tools":0,"tools":["Node.js + @napi-rs/canvas (optional)","FFmpeg (optional encoding)"]},
-  "harneloop":{"url":"https://harneloop.kaelux.dev","detail":"Extracted, tested and promoted through an external Harneloop unit. The optional thin export contains the verified skill."},
-  "documentation":"https://github.com/Ker102/smooth-motion-graphics/blob/main/INSTALL.md"
+  "manual_setup": [
+    "No MCP, API key or image model is required. The instructions can be used with your existing animation tools.",
+    "Optional reference renderer: Node.js 20+, system FFmpeg with libx264 for encoding, and your own licensed font if desired.",
+    "Set SMOOTH_FFMPEG or SMOOTH_FONT_PATH only if using a non-default executable or local font. Inspect preview frames on the machine that will encode the video."
+  ],
+  "notes": [
+    "Reference layouts: title, 2–4 inputs into a central object, and 3–7 workflow cards with explicit directed edges. Extend them when the story needs a different layout.",
+    "Optional Harneloop thin export is available in the release. It is a promoted snapshot for reuse; it does not include private development runs or claim a one-command import.",
+    "The example uses fictional Luma branding. Replace the story with verified facts for your product."
+  ],
+  "contents": {
+    "skills": 1,
+    "references": 1,
+    "renderers": 1,
+    "files": 6,
+    "mcp_tools": 0,
+    "tools": [
+      "Node.js + @napi-rs/canvas (optional)",
+      "FFmpeg (optional encoding)"
+    ]
+  },
+  "harneloop": {
+    "url": "https://harneloop.kaelux.dev",
+    "detail": "Extracted, tested and promoted through an external Harneloop unit. The optional thin export contains the verified skill."
+  },
+  "documentation": "https://github.com/Ker102/smooth-motion-graphics/blob/main/INSTALL.md",
+  "type": "Skill"
 }

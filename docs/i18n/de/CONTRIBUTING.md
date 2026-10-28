@@ -1,14 +1,18 @@
 # Einen Harness einreichen
 
+ToolIndex umfasst alle Werkzeuge, die KI-Agenten nutzen können: Skills, MCP-Server, CLIs, APIs, Bibliotheken, Plugins, Workflows und Harnesses. Gehostete und kommerzielle Werkzeuge sind willkommen, wenn Zugang, Preise, Authentifizierung und Bedingungen klar sind. Jeder Eintrag verlinkt direkt auf das Quellrepository oder die offizielle Dokumentation.
+
+Ein Logo oder eigenes Bild ist optional. Falls vorhanden, bitte Quelle und Alternativtext angeben; sonst zeigt der Eintrag neutrale Initialen. Wähle einen Werkzeugtyp und beschreibe Installation oder Dienstzugang. Quellen außerhalb von GitHub sind erlaubt; automatische README-Badge-Prüfungen unterstützen derzeit nur GitHub.
+
 **Neue Einreichungen sind willkommen.** Wir suchen praktische, wiederverwendbare Agent-Konfigurationen, auch kleine Skill-Ordner. Harneloop ist optional.
 
 Der einfachste Weg benötigt weder Fork noch Pull Request:
 
-1. [Öffnen Sie das GitHub-Einreichungsformular](https://github.com/Ker102/harness-library/issues/new?template=submit-harness.yml). Teilen Sie Repository, Name und Aufgabe/Kategorie mit.
+1. [Öffnen Sie das GitHub-Einreichungsformular](https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml). Teilen Sie Repository, Name und Aufgabe/Kategorie mit.
 2. Erklären Sie Installation, gezielte Distribution, Version/Lizenz und manuelle Verbindungen. Zusätzliche Angaben zur Zusammensetzung und Testnachweise sind optional.
 3. Maintainer prüfen Ihr Issue, fragen dort bei Bedarf nach fehlenden Angaben und veröffentlichen genehmigte Einträge. Spätere Änderungen können in einem weiteren Issue oder PR eingereicht werden.
 
-Für das Formular benötigen Sie nur ein GitHub-Konto. Der [Website-Leitfaden](https://ker102.github.io/harness-library/submit/) erklärt denselben Ablauf.
+Für das Formular benötigen Sie nur ein GitHub-Konto. Der [Website-Leitfaden](https://toolindex.org/submit/) erklärt denselben Ablauf.
 
 Für einen PR kopieren Sie `docs/listing.example.json` nach `data/listings/your-slug.json`. Verwenden Sie denselben kleingeschriebenen Slug im Dateinamen und in `id`. Führen Sie `python scripts/catalog.py validate` und die im README beschriebenen Tests aus.
 

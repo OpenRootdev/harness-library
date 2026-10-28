@@ -1,14 +1,18 @@
 # Enviar un harness
 
+ToolIndex incluye cualquier herramienta que puedan usar los agentes de IA: habilidades, servidores MCP, CLI, API, bibliotecas, complementos, flujos de trabajo y harnesses. Se aceptan servicios alojados y comerciales si explican acceso, precios, autenticación y condiciones. Cada ficha enlaza directamente al repositorio de origen o a la documentación oficial.
+
+El logotipo o la imagen personalizada son opcionales. Si se añaden, indica su origen y texto alternativo; en caso contrario se muestran iniciales neutras. Elige el tipo de herramienta y explica la instalación o el acceso al servicio. Se aceptan fuentes fuera de GitHub; la comprobación automática de insignias en README solo admite GitHub.
+
 **Se aceptan nuevas propuestas.** Buscamos configuraciones prácticas y reutilizables para agentes, incluidas pequeñas carpetas de habilidades. Harneloop es opcional.
 
 La vía más sencilla no requiere un fork ni una pull request:
 
-1. [Abre el formulario de envío de GitHub](https://github.com/Ker102/harness-library/issues/new?template=submit-harness.yml). Comparte el repositorio, el nombre y la tarea/categoría.
+1. [Abre el formulario de envío de GitHub](https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml). Comparte el repositorio, el nombre y la tarea/categoría.
 2. Explica la instalación, la distribución específica, la versión/licencia y las conexiones manuales. Los detalles adicionales de composición y las pruebas de funcionamiento son opcionales.
 3. Los mantenedores revisan tu issue, solicitan allí los datos que falten si es necesario y publican las entradas aprobadas. Los cambios posteriores pueden enviarse mediante otra issue o PR.
 
-Solo necesitas una cuenta de GitHub para usar el formulario. La [guía del sitio web](https://ker102.github.io/harness-library/submit/) explica el mismo proceso.
+Solo necesitas una cuenta de GitHub para usar el formulario. La [guía del sitio web](https://toolindex.org/submit/) explica el mismo proceso.
 
 Para una PR, copia `docs/listing.example.json` en `data/listings/your-slug.json`. Usa el mismo slug en minúsculas en el nombre del archivo y en `id`. Ejecuta `python scripts/catalog.py validate` y las pruebas descritas en el README.
 

@@ -1,4 +1,4 @@
-# Listed in Harness Library: impulso comunitario gratuito de 14 días
+# Listed in ToolIndex: impulso comunitario gratuito de 14 días
 
 El programa recompensa a quienes facilitan el descubrimiento de harnesses reutilizables. No hay pagos ni obligación de usar Harneloop.
 
@@ -9,12 +9,12 @@ El programa recompensa a quienes facilitan el descubrimiento de harnesses reutil
 Ejemplo:
 
 ```md
-[![Listed in Harness Library](https://openrootdev.github.io/harness-library/badges/your-slug.svg)](https://openrootdev.github.io/harness-library/harnesses/your-slug/)
+[![Listed in ToolIndex](https://toolindex.org/badges/your-slug.svg)](https://toolindex.org/tools/your-slug/)
 ```
 
-Se admite el Markdown exacto o una imagen HTML enlazada equivalente. El texto alternativo de la imagen debe ser «Listed in Harness Library». Los ejemplos dentro de bloques de código o comentarios HTML no cuentan.
+Se admite el Markdown exacto o una imagen HTML enlazada equivalente. El texto alternativo de la imagen debe ser «Listed in ToolIndex». Los ejemplos dentro de bloques de código o comentarios HTML no cuentan.
 
-Los enlaces de vuelta `https://openrootdev.github.io/harness-library/#your-slug` emitidos anteriormente siguen siendo válidos y llevan a la página correspondiente. Usa la URL real de la página para las nuevas insignias.
+Los enlaces de vuelta `https://toolindex.org/#your-slug` emitidos anteriormente siguen siendo válidos y llevan a la página correspondiente. Usa la URL real de la página para las nuevas insignias.
 
 Las fichas activas aparecen antes que las normales, y dentro de cada grupo se ordenan alfabéticamente. Los filtros de búsqueda y categoría siguen aplicándose. El directorio muestra una etiqueta **Community boost** y su fecha de caducidad en la página de detalle. Se trata de una posición promocional; el estado de revisión y las afirmaciones de calidad siguen siendo independientes.
 
@@ -24,4 +24,8 @@ Si GitHub no está disponible temporalmente, no se concede ningún impulso nuevo
 
 La insignia puede permanecer tras la caducidad. Cualquier política nueva se debatiría públicamente; no hay promoción recurrente oculta ni posiciones de pago.
 
-Las insignias emitidas antes de la migración a Kaelux Labs en `https://ker102.github.io/harness-library/` siguen siendo válidas. La migración no reinicia el período original de 14 días. Actualiza tanto la imagen como el enlace de vuelta a la nueva dirección canónica cuando te resulte conveniente.
+Las insignias emitidas antes de la migración a Kaelux Labs en `https://toolindex.org/` siguen siendo válidas. La migración no reinicia el período original de 14 días. Actualiza tanto la imagen como el enlace de vuelta a la nueva dirección canónica cuando te resulte conveniente.
+
+ToolIndex incluye cualquier herramienta que puedan usar los agentes de IA: habilidades, servidores MCP, CLI, API, bibliotecas, complementos, flujos de trabajo y harnesses. Se aceptan servicios alojados y comerciales si explican acceso, precios, autenticación y condiciones. Cada ficha enlaza directamente al repositorio de origen o a la documentación oficial.
+
+El logotipo o la imagen personalizada son opcionales. Si se añaden, indica su origen y texto alternativo; en caso contrario se muestran iniciales neutras. Elige el tipo de herramienta y explica la instalación o el acceso al servicio. Se aceptan fuentes fuera de GitHub; la comprobación automática de insignias en README solo admite GitHub.

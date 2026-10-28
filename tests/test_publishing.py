@@ -51,7 +51,7 @@ class PublishingTests(unittest.TestCase):
     def test_home_links_are_real_paths_and_submissions_are_prominent(self):
         page=Page((self.out/'index.html').read_text(encoding='utf-8'))
         for e in self.catalog['listings']:self.assertIn(p.local(p.harness_path(e)),page.hrefs)
-        self.assertIn('/harness-library/submit/',page.hrefs)
+        self.assertIn('/submit/',page.hrefs)
         self.assertIn('New submissions welcome',' '.join(page.data))
     def test_sitemap_contains_only_existing_canonical_pages(self):
         root=ET.parse(self.out/'sitemap.xml').getroot();locations=[el.text for el in root.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]

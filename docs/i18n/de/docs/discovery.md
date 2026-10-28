@@ -1,51 +1,34 @@
-# Auffindbarkeit und Indexierung
+# Auffindbarkeit und Bereitstellung
 
-Aktueller Standort seit `2026-10-20`: [OpenRootdev/harness-library](https://github.com/OpenRootdev/harness-library) und das [Verzeichnis](https://openrootdev.github.io/harness-library/). Die historischen Hinweise unten beschreiben den vorherigen Umzug.
-
-Das öffentliche Verzeichnis veröffentlicht vollständiges HTML unter stabilen URLs. Suchmaschinen, Browser ohne JavaScript und Agenten können Installation, Voraussetzungen, Quelle, Distribution und Prüfumfang jedes genehmigten Harness direkt lesen. JavaScript verbessert nur Filterung, Kopieren und die frühere Hash-Navigation.
+ToolIndex veröffentlicht vollständiges HTML, Markdown-Spiegel und einen geprüften JSON-Katalog. Suchmaschinen und Agenten lesen Installation oder Zugang, Quellen, Lizenzen und Prüfumfang ohne JavaScript.
 
 ## Öffentliche Ressourcen
 
-- [Verzeichnis](https://openrootdev.github.io/harness-library/) und [Einreichungsleitfaden](https://openrootdev.github.io/harness-library/submit/).
-- [Sitemap](https://openrootdev.github.io/harness-library/sitemap.xml): nur kanonische HTML-Seiten. Tägliche Badge-Prüfungen erfinden keine Änderungsdaten für Inhalte.
-- [llms.txt](https://openrootdev.github.io/harness-library/llms.txt): ein kompakter Wegweiser zu Markdown-Installationsseiten und Daten.
-- [llms-full.txt](https://openrootdev.github.io/harness-library/llms-full.txt): zusammengefasster öffentlicher Text.
-- [catalog.json](https://openrootdev.github.io/harness-library/catalog.json): geprüfte Einträge, kanonische Seiten-URLs, Installation, manuelle Einrichtung und Belege mit definiertem Umfang.
-- Jede kanonische HTML-Seite hat ein entsprechendes `index.md`, verlinkt mit `rel="alternate" type="text/markdown"`.
+- [ToolIndex](https://toolindex.org/)
+- [submit/](https://toolindex.org/submit/)
+- [sitemap.xml](https://toolindex.org/sitemap.xml)
+- [llms.txt](https://toolindex.org/llms.txt)
+- [llms-full.txt](https://toolindex.org/llms-full.txt)
+- [catalog.json](https://toolindex.org/catalog.json)
 
-Jede HTML-Seite besitzt einen eindeutigen Titel, eine Beschreibung und eine kanonische URL, Metadaten für soziale Vorschauen und passendes JSON-LD. Strukturierte Daten beschreiben das tatsächliche Verzeichnis, den Maintainer und die Harnesses; sie erfinden keine Bewertungen, Downloads oder universelle Kompatibilität. Unbekannte Pfade liefern den GitHub-Pages-Status 404 über die noindex-Fehlerseite. Alte Hash-Links für Einträge werden weiterhin unterstützt.
+## Google-Cloud-Hosting
 
-## Einrichtung durch den Eigentümer
+Cloud Run betreibt die Website in europe-west1 mit mindestens 0 und höchstens 2 Instanzen und anfragebasierter Abrechnung. Firebase Hosting übernimmt HTTPS und die Weiterleitung. DNS wird mit Firebase Hosting eingerichtet, nicht mit GitHub Pages. Das Staging-Skript kopiert nur öffentliche Ausgabe und Containerkonfiguration; verwende den ausgegebenen Pfad für PUBLIC_CONTEXT. Die Bereitstellung erfordert autorisierten Zugriff auf Google Cloud und Firebase CLI.
 
-1. Fügen Sie in [Google Search Console](https://search.google.com/search-console) eine **URL-Präfix-Property** für `https://openrootdev.github.io/harness-library/` hinzu. Das begrenzt die Property auf das Projekt. Nutzen Sie die für Ihr Konto angebotene Verifizierungsmethode; eine HTML-Verifizierungsdatei kann in `site/` abgelegt werden, sobald ihr exakter Dateiname und Inhalt vorliegen.
-2. Reichen Sie `sitemap.xml` in dieser Property ein. Prüfen Sie Startseite, Einreichungsleitfaden und Harness-URLs; beantragen Sie Indexierung, wenn das Werkzeug sie anbietet. Eine Einreichung ist ein Hinweis zur Entdeckung, keine Indexierungsgarantie.
-3. Fügen Sie dieselbe Website in [Bing Webmaster Tools](https://www.bing.com/webmasters/) hinzu und reichen Sie die Sitemap ein. Falls das Konto Import aus Google Search Console anbietet, kann die verifizierte Property wiederverwendet werden.
-4. Sehen Sie die Indexierungsberichte nach dem Deployment erneut durch. Beheben Sie gemeldete Crawl- oder Inhaltsprobleme anhand von Belegen. Betrachten Sie weder eine `site:`-Suche noch einen Lighthouse-Wert als Beweis für Indexierungsabdeckung oder Rankings.
+```sh
+python scripts/stage_cloudrun.py
+gcloud run deploy toolindex --source PUBLIC_CONTEXT --project toolindex-org --region europe-west1 --min 0 --max 2 --min-instances 0 --max-instances 2 --cpu-throttling --memory 512Mi --execution-environment gen2 --service-account toolindex-runtime@toolindex-org.iam.gserviceaccount.com --build-service-account projects/toolindex-org/serviceAccounts/toolindex-build@toolindex-org.iam.gserviceaccount.com --allow-unauthenticated
+firebase deploy --only hosting --project toolindex-org
+```
 
-Die Verifizierung benötigt das Konto des Eigentümers oder dessen bereitgestelltes Verifizierungsartefakt. Veröffentlichen Sie keine geratenen Verifizierungstokens. Eine ergänzte HTML-Verifizierungsdatei muss außerhalb der Sitemap bleiben und in Builds erhalten werden.
+[Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
 
-## Benachrichtigungen über veröffentlichte Änderungen
+## Suchmaschinen
 
-Nach dem Deployment eines normalen Pushs benachrichtigt der Pages-Workflow [IndexNow](https://www.indexnow.org/documentation) mit den kanonischen URLs aus der erzeugten Sitemap. Tägliche Badge-Aktualisierungen überspringen diese Benachrichtigung. Diese Migration ändert alle fünf Seiten; begrenzen Sie Einreichungen bei einem größeren Verzeichnis auf geänderte Seiten. Google nutzt Search Console und normales Crawling; es erfolgt keine Einreichung bei Google über IndexNow.
+Bestätige die URL-Präfix-Property toolindex.org mit dem vom Eigentümer bereitgestellten Nachweis und reiche sitemap.xml in Search Console und Bing Webmaster Tools ein. Keine Tokens erfinden oder Einreichung als Indexierungsnachweis behandeln. Die robots.txt im Stammverzeichnis erlaubt Crawling. Optionale IndexNow-Meldungen werden erst nach Veröffentlichung der passenden Eigentumsdatei und Seiten gesendet.
 
-Das Projekt hostet `indexnow-key.txt` und gibt dessen exakten `keyLocation` an. Damit wird die Eigentümerschaft auf `/harness-library/` begrenzt, ohne andere Projekte auf dem gemeinsamen Host einzubeziehen. Der Schlüssel muss zur Protokollverifizierung öffentlich ausgeliefert werden; er ist keine Zugangsinformation zu einem Webmaster-Konto. Login, kostenpflichtiger Dienst oder zusätzliche Abhängigkeit sind nicht erforderlich. Ein vorübergehender API-Fehler macht ein erfolgreiches Website-Deployment nicht rückgängig.
+[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/) · [IndexNow](https://www.indexnow.org/documentation)
 
-Für eine bewusste Inhaltsänderung außerhalb des Workflows führen Sie zuerst den Build aus und dann `python scripts/notify_indexnow.py --dry-run`, um die URL-Liste zu prüfen, oder `python scripts/notify_indexnow.py`, um sie einzureichen. HTTP 200 bedeutet empfangen; HTTP 202 bedeutet empfangen bei noch ausstehender Schlüsselprüfung. Keiner der beiden Status beweist Indexierung oder Rankings. Vermeiden Sie wiederholte Einreichungen bei unveränderten Inhalten.
+## Kompatibilität und Prüfung
 
-## GitHub Pages und robots.txt
-
-Robots-Regeln werden im **Host-Stammverzeichnis** unter `https://openrootdev.github.io/robots.txt` gelesen, nicht unter `/harness-library/robots.txt`. Eine projektlokale Datei steuert das Crawling des gemeinsamen Hosts nicht. Die Projektdatei verweist nur auf die aktuelle Sitemap. Reichen Sie die Sitemap über Webmaster-Konten ein.
-
-Fügt der Eigentümer später ein Root-Site-Repository oder eine eigene Domain hinzu, prüfen Sie die maßgebliche Robots-Datei vor der Einführung von Einschränkungen. Ändern Sie Regeln anderer Projekte auf demselben Host niemals leichtfertig.
-
-## Migration zur Organisation
-
-Repository und Verzeichnis wurden am 10. Oktober 2026 zu [Kaelux Labs](https://github.com/OpenRootdev/harness-library) verschoben. GitHub leitet die alte Repository-URL um. Ein kleines [Pages-Repository des Kontos](https://github.com/Ker102/ker102.github.io) erhält die alten Verzeichnisseiten mit sofortigen Weiterleitungen und kanonischen Links und liefert bestehende Badge-Bilder weiter aus. Seine `robots.txt` an der Host-Wurzel erlaubt Crawling und verlinkt die aktuelle Sitemap.
-
-Bestehende Badge-Rücklinks mit alter oder aktueller Verzeichnis-URL bleiben berechtigt. Eine Änderung dieser Links startet einen bestehenden 14-Tage-Boost nicht neu; die ursprünglichen Nachweisdaten bleiben maßgeblich.
-
-## Auffindbarkeit für Agenten
-
-Agenten können gewöhnliches HTML, den JSON-Katalog oder Markdown-Spiegel nutzen. `llms.txt` ist ein Vorschlag zur Vereinfachung, kein Google-Rankingfaktor oder Erfordernis. Google erklärt, dass seine KI-Suchfunktionen dieselben grundlegenden SEO-Praktiken wie gewöhnliche Suche nutzen. Crawlbarer Text, klare Seitenlinks, genaue Belege und nützliche Inhalte sind wichtig; keine Konfiguration garantiert Aufnahme oder Zitate.
-
-Primärquellen: [Google JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics), [Sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [Robots-Spezifikation](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec), [KI-Funktionen](https://developers.google.com/search/docs/appearance/ai-features), [llms.txt-Vorschlag](https://llmstxt.org/).
+Alte /harnesses/-Seiten leiten auf /tools/ weiter. Ursprüngliche Badge-URLs und Beschriftungen bleiben gültig, ohne den einmaligen 14-Tage-Boost zurückzusetzen. GitHub leitet das frühere Repository auf OpenRootdev/toolindex um. Prüfungen bleiben begrenzte Nachweise. CI führt eingereichten Werkzeugcode niemals aus und installiert keine seiner Abhängigkeiten.
