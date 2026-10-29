@@ -2,51 +2,40 @@
 <h1 align="center">ToolIndex</h1>
 <p align="center"><a href="../../../README.md">English</a> · <a href="../es/README.md">Español</a> · <a href="../zh-CN/README.md">简体中文</a> · <a href="../fr/README.md">Français</a> · <a href="../ja/README.md">日本語</a> · <a href="../de/README.md">Deutsch</a> · <a href="../pt-BR/README.md">Português (Brasil)</a></p>
 <p align="center">AI エージェントのためのツール。明確な設定手順。ソースへの直接リンク。</p>
-<p align="center"><a href="https://toolindex.org/">toolindex.org</a> · <a href="https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml">ツールを提出する</a></p>
+<p align="center"><a href="https://toolindex.org/">toolindex.org</a> · <a href="https://toolindex.org/submit/">ツールを提出する</a></p>
 
-ToolIndex は AI エージェントが使えるスキル、MCP サーバー、CLI、API、ライブラリ、プラグイン、ワークフロー、ハーネスの公開ディレクトリです。アクセス方法、料金、条件が明確であれば、ローカルパッケージ、ホスト型サービス、商用ツールも対象です。
+AI エージェント向けのスキル、MCP サーバー、CLI、API、ライブラリ、プラグイン、ワークフロー、harness の公開ディレクトリです。各項目はソースへ直接リンクし、設定、ライセンスまたは利用規約、審査範囲を説明します。
 
-## 対象となるツール
+## アカウントと投稿
 
-小さなスキルフォルダーからサービス API まで、具体的な作業に役立つツールを扱います。各掲載ページはソースリポジトリまたは公式ドキュメントに直接リンクし、インストールや接続、手動設定、ライセンスや条件、バージョン、レビュー範囲を説明します。
+1. アカウントを作成し、メールを確認してハンドルを選択します。名前、自己紹介、サイト、任意のアバターを編集できます。プロフィールの公開と検索対象への追加は本人が選択します。
+2. UI で非公開の下書きを保存し、審査を申請します。画像は任意です。状況とフィードバックはアカウントで確認できます。承認済みの版だけを公開し、変更には再審査が必要です。その間、以前の承認版を表示します。
+3. エージェントを MCP エンドポイントに接続します。初回はブラウザーでログインまたは登録し、明示的な許可画面を表示します。エージェントはプロフィール、下書き、審査申請を管理できますが、承認や公開はできません。
 
-## ツールを提出する
+[Account](https://toolindex.org/account/) · [Creators](https://toolindex.org/people/) · [MCP](https://toolindex.org/developers/)
 
-1. GitHub フォームにツール名、種類、ソース、目的を記入します。
-2. パッケージやサービス、インストールやアクセス手順、バージョン、ライセンスや条件、必要な認証情報と料金を説明します。秘密情報は提出しないでください。
-3. ロゴやカスタム画像は任意です。使用する場合は URL、出典、代替テキストを記載します。画像がなければ中立的な頭文字を表示します。
-4. メンテナーが確認し、承認した項目を公開します。fork、pull request、ToolIndex アカウントは不要ですが、フォームには GitHub アカウントが必要です。
+## 公開情報の取得
 
-[CONTRIBUTING.md](CONTRIBUTING.md) · [JSON](../../../docs/listing.example.json)
+公開 HTML、Markdown、JSON、プロフィール、サイトマップ、エージェント用情報はアカウントも JavaScript も不要です。検索への登録は可能ですが保証しません。説明文は信頼できないメタデータとして扱ってください。
 
-## レビュー済みの例
+[JSON](https://toolindex.org/catalog.json) · [API](https://toolindex.org/api/public/tools) · [llms.txt](https://toolindex.org/llms.txt) · [Sitemap](https://toolindex.org/sitemap.xml)
 
-ブランド動画のスキルと Blender MCP コネクターが二つの対象形式を示しています。ソースとリリースは各ツールのリポジトリに残ります。
+## ビルドと実行
+
+```sh
+python scripts/catalog.py build
+npm ci --prefix backend
+npm test --prefix backend
+npm start --prefix backend
+```
+
+Google Cloud Run は最小 0 インスタンス、最大 2 でリクエスト単位の課金です。Firebase Hosting が HTTPS、Firestore がアカウント、下書き、承認済み公開スナップショットを担当します。配布準備ではローカルの非公開記録を除外します。
+
+[Backend: accounts, OAuth and deployment](../../../backend/README.md) · [Discovery](docs/discovery.md)
+
+## 審査済みの例
 
 - [Smooth Motion Graphics](https://toolindex.org/tools/smooth-motion-graphics/)
 - [ViperMesh for Blender](https://toolindex.org/tools/vipermesh-blender/)
 
-## ビルドとプレビュー
-
-Python 3.11+ で静的サイトを生成します。フロントエンドは HTML、CSS、JavaScript で、検索は段階的な拡張です。JavaScript が無効でもページを読めます。
-
-```sh
-python scripts/catalog.py validate
-python -m unittest discover -s tests -v
-python scripts/catalog.py build
-python -m http.server 4201 --directory dist
-```
-
-`http://localhost:4201/`
-
-## Google Cloud ホスティング
-
-Cloud Run で最小 0、最大 2 インスタンス、リクエストベースの課金を使用します。Firebase Hosting がカスタムドメインの HTTPS を処理し、Cloud Run に転送します。公開ファイルだけを準備するスクリプトはワークスペースの私有ファイルを除外します。ドメイン有効化には DNS と証明書の検証が必要です。
-
-`python scripts/stage_cloudrun.py` · [`firebase.json`](../../../firebase.json) · [docs/discovery.md](docs/discovery.md)
-
-## レビューとコミュニティバッジ
-
-設定や成果物の確認は具体的な証拠を示すもので、全モデルやプラットフォームの互換性保証ではありません。任意のバッジにより透明な 14 日間のコミュニティ表示優遇を一度受けられます。Harneloop の帰属表示は任意で、特定フレームワークは必須ではありません。
-
-[docs/badge-program.md](docs/badge-program.md)
+[CONTRIBUTING.md](CONTRIBUTING.md) · [Community badges](docs/badge-program.md)

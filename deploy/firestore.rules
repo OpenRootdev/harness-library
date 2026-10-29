@@ -1,0 +1,7 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // All access is mediated by the Cloud Run runtime, with ownership checks.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

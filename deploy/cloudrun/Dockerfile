@@ -1,4 +1,10 @@
-FROM nginx/nginx-unprivileged@sha256:969ccb55136a85056874e579908584bc0a39217a72ebf819a4ef4f44a62c9dda
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY public/ /usr/share/nginx/html/
+FROM node:24-alpine
+WORKDIR /app/backend
+COPY backend/package.json backend/package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
+COPY backend/*.js ./
+COPY layout.html /app/site/layout.html
+COPY public/ /app/dist/
+USER node
 EXPOSE 8080
+CMD ["node", "server.js"]

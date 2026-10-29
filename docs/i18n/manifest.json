@@ -84,73 +84,73 @@
   "sources": [
     {
       "path": "README.md",
-      "sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09",
+      "sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         },
         "fr": {
           "path": "docs/i18n/fr/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         },
         "ja": {
           "path": "docs/i18n/ja/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         },
         "de": {
           "path": "docs/i18n/de/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/README.md",
           "status": "complete",
-          "source_sha256": "c6350354d4e3df143a1b7000ff8028bc6a3a5e4977185858533616d39df82f09"
+          "source_sha256": "cd8e756533769a28c39ea654ff197f0084092b349510a50ea404f2bd4d73e6c4"
         }
       }
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b",
+      "sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         },
         "fr": {
           "path": "docs/i18n/fr/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         },
         "ja": {
           "path": "docs/i18n/ja/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         },
         "de": {
           "path": "docs/i18n/de/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/CONTRIBUTING.md",
           "status": "complete",
-          "source_sha256": "56bc0e093592f16476f7db117a308b7a44e11950035ade64c150b27ec4e3d93b"
+          "source_sha256": "47be932408929239051da66e65be9dab09d7fa4352a575d92fd80aa35d65b0e1"
         }
       }
     },
@@ -192,37 +192,37 @@
     },
     {
       "path": "docs/discovery.md",
-      "sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a",
+      "sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105",
       "mirrors": {
         "es": {
           "path": "docs/i18n/es/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         },
         "zh-CN": {
           "path": "docs/i18n/zh-CN/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         },
         "fr": {
           "path": "docs/i18n/fr/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         },
         "ja": {
           "path": "docs/i18n/ja/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         },
         "de": {
           "path": "docs/i18n/de/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         },
         "pt-BR": {
           "path": "docs/i18n/pt-BR/docs/discovery.md",
           "status": "complete",
-          "source_sha256": "d2dc4c37baef163ce3c2510dd559ea7a145fda430f267b5387c3dace7a88555a"
+          "source_sha256": "a45b7b1237b9229b6ec94e3ef1090c3b871df1c0a8717823fd9e979a3b69f105"
         }
       }
     }

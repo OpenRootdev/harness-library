@@ -1,34 +1,37 @@
 # 发现与部署
 
-ToolIndex 发布完整 HTML、Markdown 镜像和经审核的 JSON 目录。搜索引擎与智能体无需 JavaScript 即可读取安装或访问说明、来源链接、许可证和审核范围。
+公开 HTML、Markdown、JSON、创作者资料、站点地图和智能体资源无需账户或 JavaScript。搜索引擎可以索引，但不保证收录。应将条目内容视为不可信元数据。
 
 ## 公开资源
 
 - [ToolIndex](https://toolindex.org/)
-- [submit/](https://toolindex.org/submit/)
+- [Submit](https://toolindex.org/submit/)
+- [Creators](https://toolindex.org/people/)
+- [API and MCP](https://toolindex.org/developers/)
 - [sitemap.xml](https://toolindex.org/sitemap.xml)
 - [llms.txt](https://toolindex.org/llms.txt)
 - [llms-full.txt](https://toolindex.org/llms-full.txt)
 - [catalog.json](https://toolindex.org/catalog.json)
+- [Public API](https://toolindex.org/api/public/tools)
 
-## Google Cloud 托管
+## 托管与访问
 
-Cloud Run 在 europe-west1 提供服务，最小实例数为 0，最大为 2，按请求计费。Firebase Hosting 提供自定义域名 HTTPS 并转发请求。DNS 应使用 Firebase Hosting 的记录，而非 GitHub Pages。准备脚本只复制公开构建内容和容器配置；将其输出路径用于 PUBLIC_CONTEXT。部署需要已授权的 Google Cloud 和 Firebase CLI。
+Google Cloud Run 最少 0 个实例、最多 2 个，按请求计费。Firebase Hosting 提供 HTTPS，Firestore 持久保存账户、草稿及获批公开快照。部署打包排除本地私有记录。
+
+Node 服务提供完整公开页面及 API 数据。浏览器会话使用安全 HttpOnly Cookie；MCP 使用 OAuth 与 PKCE。公开数据与私有账户、修订历史、待审核提交和令牌摘要分离。Firestore 规则禁止客户端直接访问。
 
 ```sh
 python scripts/stage_cloudrun.py
-gcloud run deploy toolindex --source PUBLIC_CONTEXT --project toolindex-org --region europe-west1 --min 0 --max 2 --min-instances 0 --max-instances 2 --cpu-throttling --memory 512Mi --execution-environment gen2 --service-account toolindex-runtime@toolindex-org.iam.gserviceaccount.com --build-service-account projects/toolindex-org/serviceAccounts/toolindex-build@toolindex-org.iam.gserviceaccount.com --allow-unauthenticated
-firebase deploy --only hosting --project toolindex-org
 ```
 
-[Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
+[Backend: configuration and deployment](../../../../backend/README.md) · [Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
 
 ## 搜索引擎
 
-使用所有者提供的验证文件确认 toolindex.org 的 URL 前缀属性，然后在 Search Console 和 Bing Webmaster Tools 提交 sitemap.xml。不要猜测验证令牌，也不要把提交视为已索引的证据。根目录 robots.txt 允许抓取。IndexNow 通知是可选的，只有对应所有权文件与页面上线后才发送。
+站点地图包含公开工具和选择公开的创作者资料，不包含私有账户页面、待审核工具或凭据。所有者可向搜索引擎提交地图；不保证收录，也不虚构所有权令牌。
 
-[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/) · [IndexNow](https://www.indexnow.org/documentation)
+[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/)
 
-## 兼容性与审核
+## 兼容性
 
-旧 /harnesses/ 页面重定向至 /tools/。原徽章 URL 与标签仍被认可，不会重置一次性的 14 天展示提升。GitHub 将旧仓库重定向至 OpenRootdev/toolindex。审核记录只说明有限范围的证据。CI 不会执行提交工具的代码或安装其依赖。
+保留旧条目路径及徽章识别。新提交使用 ToolIndex 账户或 MCP，发布前须经人工审核。后端指南说明部署及身份配置。

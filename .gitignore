@@ -6,3 +6,6 @@ __pycache__/
 docs/internal/
 task.md
 implementation-plan.md
+node_modules/
+.env
+.env.*
