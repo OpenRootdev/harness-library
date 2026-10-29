@@ -11,8 +11,8 @@ const origin='https://toolindex.org';
 const alice={uid:'alice',email:'alice@example.test',email_verified:true};
 const bob={uid:'bob',email:'bob@example.test',email_verified:true};
 const admin={uid:'admin',email:'reviewer@example.test',email_verified:true,admin:true};
-const profile={handle:'alice-tools',displayName:'Alice <script>',bio:'Useful tools',website:'https://example.org/',avatar:'',discoverable:true};
-const tool={name:'Example tool',summary:'A focused example for agents.',type:'CLI',category:'Coding',repository:'https://example.org/docs',version:'1.0',license:'MIT',installation:'Install the complete package.',manualSetup:'None',pricing:'Free',imageUrl:'',imageAlt:'',imageSource:''};
+const profile={handle:'alice-tools',displayName:'Alice <script> $&',bio:'Useful tools',website:'https://example.org/',avatar:'',discoverable:true};
+const tool={name:'Example tool $1',summary:'A focused example for agents.',type:'CLI',category:'Coding',repository:'https://example.org/docs',version:'1.0',license:'MIT',installation:'Install the complete package.',manualSetup:'None',pricing:'Free',imageUrl:'',imageAlt:'',imageSource:''};
 async function fixture() {const store=new MemoryStore(),api=domain(store,{listings:[]},origin);await api.saveProfile(alice,profile);return {store,api};}
 
 test('pending tools and revisions do not enter public catalog until reviewer approval',async()=>{
@@ -104,7 +104,7 @@ test('HTTP: CSRF, unauthorized review, escaped crawlable profiles and pending pr
   assert.equal((await call('/api/me',{user:'none'})).status,401);
   assert.equal((await call('/api/me/profile',{method:'PUT',body:profile,headers:{Origin:'https://evil.example'}})).status,403);
   assert.equal((await call('/api/me/profile',{method:'PUT',body:profile})).status,200);
-  const p=await call('/people/alice-tools/');assert.equal(p.status,200);const html=await p.text();assert.ok(html.includes('Alice &lt;script&gt;'));assert.ok(!html.includes('Alice <script>'));assert.ok(html.includes('ProfilePage'));
+  const p=await call('/people/alice-tools/');assert.equal(p.status,200);const html=await p.text();assert.ok(html.includes('Alice &lt;script&gt; $&amp;'));assert.ok(!html.includes('Alice <script>'));assert.ok(html.includes('ProfilePage'));
   const d=await api.saveTool(alice,tool);await api.submit(alice,d.id,d.revision);
   assert.equal((await call('/api/review',{user:'bob'})).status,403);
   assert.equal((await call('/tools/'+d.id+'/')).status,404);
@@ -113,7 +113,7 @@ test('HTTP: CSRF, unauthorized review, escaped crawlable profiles and pending pr
   assert.equal((await call('/api/review/'+d.id,{method:'POST',user:'admin',body:{revision:d.revision,decision:'publish',evidence:'Checked installation and license scope'}})).status,200);
   assert.equal((await call('/tools/'+d.id+'/')).status,200);assert.equal((await call('/tools/'+d.id+'/index.md')).status,200);
   const pub=await(await call('/api/public/tools/'+d.id)).json();assert.ok(!pub.ownerUid&&!pub.email&&!pub.reviewNote);
-  assert.ok((await(await call('/')).text()).includes('/tools/'+d.id+'/'));
+  const home=await(await call('/')).text();assert.ok(home.includes('/tools/'+d.id+'/'));assert.ok(home.includes('Example tool $1'));
 });
 test('HTTP: complete OAuth PKCE, MCP tools and persisted provider restart',async t=>{
   const {call,store,base}=await httpFixture(t);

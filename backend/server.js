@@ -148,7 +148,7 @@ export async function createApp(options = {}) {
   app.get('/',async(req,res)=>{
     const additions=(await api.catalog()).listings.filter(e=>!baseCatalog.listings.some(b=>b.id===e.id));
     let source=await readFile(path.join(publicDir,'index.html'),'utf8');
-    source=source.replace(/(<\/div>\s*<p id="empty")/,additions.map(card).join('')+'$1');
+    source=source.replace(/(<\/div>\s*<p id="empty")/,match=>additions.map(card).join('')+match);
     res.type('html').send(source);
   });
   app.get('/sitemap.xml',async(req,res)=>{
