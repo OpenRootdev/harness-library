@@ -25,6 +25,7 @@ export async function createApp(options = {}) {
   const api = domain(store, baseCatalog, origin);
   const provider = oauthProvider(store, origin, uid => auth.getUser(uid));
   const admins = new Set((options.admins || process.env.ADMIN_EMAILS || '').split(',').map(s=>s.trim().toLowerCase()).filter(Boolean));
+  const signInProviders=(options.signInProviders || process.env.SIGN_IN_PROVIDERS || '').split(',').filter(p=>['google.com','github.com'].includes(p));
   const allowedOrigins = new Set([origin, 'https://toolindex-org.web.app', 'https://toolindex-org.firebaseapp.com']);
   const app = express(); app.disable('x-powered-by'); app.set('trust proxy', 1);
   app.use(rateLimit({windowMs:60000,limit:options.httpLimit || 600,standardHeaders:'draft-8',legacyHeaders:false,message:{error:'Request limit reached. Please retry shortly.'}}));
@@ -32,7 +33,7 @@ export async function createApp(options = {}) {
   app.use((req, res, next) => {
     res.set({'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin',
       'Permissions-Policy':'camera=(), microphone=(), geolocation=()',
-      'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https:; font-src 'self'; connect-src 'self' https://identitytoolkit.googleapis.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"});
+      'Content-Security-Policy':"default-src 'self'; script-src 'self' https://www.gstatic.com/firebasejs/13.1.0/ https://apis.google.com; style-src 'self'; img-src 'self' https:; font-src 'self'; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; frame-src https://toolindex-org.firebaseapp.com https://apis.google.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"});
     if (req.path.startsWith('/account') || req.path.startsWith('/authorize') || req.path.startsWith('/api/account') || req.path.startsWith('/api/me') || req.path.startsWith('/api/review')) res.set({'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'});
     next();
   });
@@ -59,7 +60,7 @@ export async function createApp(options = {}) {
   const html = (res, p, title, description, content, opts) => res.type('html').send(page(layout,origin,p,title,description,content,opts));
   const json = (res, value) => res.set('Cache-Control','no-store').json(value);
 
-  app.get('/api/config', (req,res)=>res.json({apiKey:options.apiKey || process.env.FIREBASE_API_KEY || '', projectId:'toolindex-org', authDomain:'toolindex-org.firebaseapp.com', publicOrigin:origin}));
+  app.get('/api/config', (req,res)=>res.set('Cache-Control','no-store').json({apiKey:options.apiKey || process.env.FIREBASE_API_KEY || '', projectId:'toolindex-org', authDomain:'toolindex-org.firebaseapp.com', publicOrigin:origin,signInProviders}));
   app.post('/api/account/session', sameOrigin, async (req,res) => {
     const token=z.string().min(20).max(10000).parse(req.body.idToken);
     let decoded;
