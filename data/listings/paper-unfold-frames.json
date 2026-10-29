@@ -4,12 +4,12 @@
   "name": "Paper Unfold Frames",
   "summary": "Photo-real stop-motion of a crumpled paper ball opening into a note, made from GPT-image keyframes.",
   "category": "Creative",
-  "repository": "https://github.com/Ker102/paper-unfold-frames",
+  "repository": "https://github.com/OpenRootdev/paper-unfold-frames",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "distribution": {
     "kind": "package",
-    "url": "https://github.com/Ker102/paper-unfold-frames/releases/download/v1.0.0/paper-unfold-frames.zip",
+    "url": "https://github.com/OpenRootdev/paper-unfold-frames/releases/download/v1.0.1/paper-unfold-frames.zip",
     "label": "Download skill ZIP",
     "scope": "One skill: SKILL.md, a frame keying script, two working prompts, a playback snippet and the licence. No media.",
     "repository_has_extra_material": true
@@ -18,13 +18,13 @@
     {
       "title": "Download the focused package",
       "body": "Download the ZIP from the release and extract it. It holds only the skill folder; preview media and translations stay on separate branches of the repository.",
-      "url": "https://github.com/Ker102/paper-unfold-frames/releases/tag/v1.0.0",
-      "label": "Release v1.0.0"
+      "url": "https://github.com/OpenRootdev/paper-unfold-frames/releases/tag/v1.0.1",
+      "label": "Release v1.0.1"
     },
     {
       "title": "Add it to your agent",
       "body": "Copy the extracted folder into your agent's skills directory (Claude Code: ~/.claude/skills/), or install it straight from main with git.",
-      "command": "git clone --depth 1 https://github.com/Ker102/paper-unfold-frames ~/.claude/skills/paper-unfold-frames"
+      "command": "git clone --depth 1 https://github.com/OpenRootdev/paper-unfold-frames ~/.claude/skills/paper-unfold-frames"
     },
     {
       "title": "Ask for an unfold",
@@ -51,11 +51,11 @@
       "Python + Pillow, numpy, scipy"
     ]
   },
-  "documentation": "https://github.com/Ker102/paper-unfold-frames/blob/main/SKILL.md",
+  "documentation": "https://github.com/OpenRootdev/paper-unfold-frames/blob/main/SKILL.md",
   "type": "Skill",
   "image": {
     "url": "assets/logos/paper-unfold-frames.svg",
     "alt": "A 3x3 grid of paper stages from crumpled ball to flat torn sheet",
-    "source": "https://github.com/Ker102/paper-unfold-frames/blob/assets/logo.svg"
+    "source": "https://github.com/OpenRootdev/paper-unfold-frames/blob/assets/logo.svg"
   }
 }

@@ -4,12 +4,12 @@
   "name": "Paper Unfold Mesh",
   "summary": "Procedural paper that crumples, folds or rolls and opens frame by frame on a canvas, with writing that bends with the sheet.",
   "category": "Creative",
-  "repository": "https://github.com/Ker102/paper-unfold-mesh",
+  "repository": "https://github.com/OpenRootdev/paper-unfold-mesh",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "distribution": {
     "kind": "package",
-    "url": "https://github.com/Ker102/paper-unfold-mesh/releases/download/v1.0.0/paper-unfold-mesh.zip",
+    "url": "https://github.com/OpenRootdev/paper-unfold-mesh/releases/download/v1.0.1/paper-unfold-mesh.zip",
     "label": "Download skill ZIP",
     "scope": "One skill: SKILL.md, the full source of a 9-scene demo composition and the licence. No media, textures or fonts.",
     "repository_has_extra_material": true
@@ -18,13 +18,13 @@
     {
       "title": "Download the focused package",
       "body": "Download the ZIP from the release and extract it. It holds only the skill folder; preview media and translations stay on separate branches of the repository.",
-      "url": "https://github.com/Ker102/paper-unfold-mesh/releases/tag/v1.0.0",
-      "label": "Release v1.0.0"
+      "url": "https://github.com/OpenRootdev/paper-unfold-mesh/releases/tag/v1.0.1",
+      "label": "Release v1.0.1"
     },
     {
       "title": "Add it to your agent",
       "body": "Copy the extracted folder into your agent's skills directory (Claude Code: ~/.claude/skills/), or install it straight from main with git.",
-      "command": "git clone --depth 1 https://github.com/Ker102/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh"
+      "command": "git clone --depth 1 https://github.com/OpenRootdev/paper-unfold-mesh ~/.claude/skills/paper-unfold-mesh"
     },
     {
       "title": "Ask for a variation",
@@ -50,11 +50,11 @@
       "GSAP"
     ]
   },
-  "documentation": "https://github.com/Ker102/paper-unfold-mesh/blob/main/SKILL.md",
+  "documentation": "https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/SKILL.md",
   "type": "Skill",
   "image": {
     "url": "assets/logos/paper-unfold-mesh.svg",
     "alt": "A paper sheet drawn as a triangle mesh with one corner folded over",
-    "source": "https://github.com/Ker102/paper-unfold-mesh/blob/assets/logo.svg"
+    "source": "https://github.com/OpenRootdev/paper-unfold-mesh/blob/assets/logo.svg"
   }
 }
