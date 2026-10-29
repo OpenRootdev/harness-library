@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "tierlist-studio",
+  "name": "Tier List Studio",
+  "summary": "A free tier list maker in your browser: drag in your own images, snap or place them freely, add notes and export a PNG.",
+  "category": "Creative",
+  "repository": "https://github.com/OpenRootdev/tierlist-studio",
+  "license": "MIT",
+  "version": "1.0.0",
+  "distribution": {
+    "kind": "package",
+    "url": "https://github.com/OpenRootdev/tierlist-studio/releases/download/v1.0.0/tierlist-studio.zip",
+    "label": "Download app ZIP",
+    "scope": "The whole editor as one index.html file plus the licence. No preview media or translations.",
+    "repository_has_extra_material": true
+  },
+  "installation": [
+    {
+      "title": "Open it in your browser",
+      "body": "The editor runs straight from GitHub Pages. Nothing to install or sign up for.",
+      "url": "https://openrootdev.github.io/tierlist-studio/",
+      "label": "Open Tier List Studio"
+    },
+    {
+      "title": "Or run it from the download",
+      "body": "Download the ZIP from the release, extract it and open index.html in Chrome, Edge, Firefox or Safari. You can also clone main, which holds only the app.",
+      "url": "https://github.com/OpenRootdev/tierlist-studio/releases/tag/v1.0.0",
+      "label": "Release v1.0.0",
+      "command": "git clone --depth 1 https://github.com/OpenRootdev/tierlist-studio"
+    },
+    {
+      "title": "Make your list",
+      "body": "Drop or paste images, drag them into tiers, double-click an item to add a note under it, adjust the look in Design, then Export PNG or Copy image."
+    }
+  ],
+  "manual_setup": [
+    "A recent browser. An internet connection when opening it, for Google Fonts and the html2canvas export library loaded from cdnjs.",
+    "Lists are autosaved in the browser's own storage. Save a project file (.json) to move a list to another device."
+  ],
+  "notes": [
+    "Images stay on the device; nothing is uploaded.",
+    "Snapping can be turned off to place items anywhere inside a tier; hold Alt while dragging to flip it for one move."
+  ],
+  "contents": {
+    "skills": 0,
+    "references": 0,
+    "renderers": 0,
+    "files": 2,
+    "mcp_tools": 0,
+    "tools": [
+      "Web browser"
+    ]
+  },
+  "documentation": "https://github.com/OpenRootdev/tierlist-studio#readme",
+  "type": "Other",
+  "image": {
+    "url": "assets/logos/tierlist-studio.svg",
+    "alt": "A tier grid with one tile being dropped into an empty slot",
+    "source": "https://github.com/OpenRootdev/tierlist-studio/blob/assets/logo.svg"
+  }
+}
