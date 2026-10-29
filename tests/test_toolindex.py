@@ -17,8 +17,8 @@ class ToolIndexTests(unittest.TestCase):
     def test_deployment_context_excludes_private_and_stale_output(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for name in ('site', 'data', 'deploy'):
-                shutil.copytree(c.ROOT / name, root / name)
+            for name in ('site', 'data', 'deploy', 'backend'):
+                shutil.copytree(c.ROOT / name, root / name, ignore=shutil.ignore_patterns('node_modules'))
             (root / 'docs/internal').mkdir(parents=True)
             (root / 'docs/internal/private.json').write_text('private')
             (root / 'dist').mkdir()
@@ -27,7 +27,9 @@ class ToolIndexTests(unittest.TestCase):
             self.assertTrue((target / 'public/index.html').is_file())
             self.assertFalse((target / 'public/stale-secret.txt').exists())
             self.assertFalse((target / 'docs').exists())
-            self.assertEqual({p.name for p in target.iterdir()}, {'public', 'Dockerfile', 'nginx.conf'})
+            self.assertEqual({p.name for p in target.iterdir()}, {'public', 'Dockerfile', 'layout.html', 'backend'})
+            self.assertFalse((target / 'backend/test').exists())
+            self.assertFalse((target / 'backend/node_modules').exists())
 
     def test_hosted_submission_composes_a_tool_issue_without_unpublished_template(self):
         url = urlsplit(FORM)

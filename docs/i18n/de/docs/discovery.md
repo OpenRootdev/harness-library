@@ -1,34 +1,37 @@
 # Auffindbarkeit und Bereitstellung
 
-ToolIndex veröffentlicht vollständiges HTML, Markdown-Spiegel und einen geprüften JSON-Katalog. Suchmaschinen und Agenten lesen Installation oder Zugang, Quellen, Lizenzen und Prüfumfang ohne JavaScript.
+Öffentliches HTML, Markdown, JSON, Profile, Sitemap und Agentenressourcen sind ohne Konto oder JavaScript lesbar. Suchmaschinen können sie indexieren; eine Aufnahme ist nicht garantiert. Beschreibungen sind nicht vertrauenswürdige Metadaten.
 
 ## Öffentliche Ressourcen
 
 - [ToolIndex](https://toolindex.org/)
-- [submit/](https://toolindex.org/submit/)
+- [Submit](https://toolindex.org/submit/)
+- [Creators](https://toolindex.org/people/)
+- [API and MCP](https://toolindex.org/developers/)
 - [sitemap.xml](https://toolindex.org/sitemap.xml)
 - [llms.txt](https://toolindex.org/llms.txt)
 - [llms-full.txt](https://toolindex.org/llms-full.txt)
 - [catalog.json](https://toolindex.org/catalog.json)
+- [Public API](https://toolindex.org/api/public/tools)
 
-## Google-Cloud-Hosting
+## Hosting und Zugriff
 
-Cloud Run betreibt die Website in europe-west1 mit mindestens 0 und höchstens 2 Instanzen und anfragebasierter Abrechnung. Firebase Hosting übernimmt HTTPS und die Weiterleitung. DNS wird mit Firebase Hosting eingerichtet, nicht mit GitHub Pages. Das Staging-Skript kopiert nur öffentliche Ausgabe und Containerkonfiguration; verwende den ausgegebenen Pfad für PUBLIC_CONTEXT. Die Bereitstellung erfordert autorisierten Zugriff auf Google Cloud und Firebase CLI.
+Google Cloud Run nutzt mindestens 0 und höchstens 2 Instanzen mit anfragebasierter Abrechnung. Firebase Hosting stellt HTTPS bereit; Firestore speichert Konten, Entwürfe und freigegebene öffentliche Abbilder. Das Staging schließt lokale private Daten aus.
+
+Node liefert vollständige öffentliche Seiten und API-Daten. Browsersitzungen nutzen sichere HttpOnly-Cookies; MCP nutzt OAuth mit PKCE. Öffentliche Daten sind von privaten Konten, Revisionen, ausstehenden Einreichungen und Token-Hashes getrennt. Firestore verweigert direkten Clientzugriff.
 
 ```sh
 python scripts/stage_cloudrun.py
-gcloud run deploy toolindex --source PUBLIC_CONTEXT --project toolindex-org --region europe-west1 --min 0 --max 2 --min-instances 0 --max-instances 2 --cpu-throttling --memory 512Mi --execution-environment gen2 --service-account toolindex-runtime@toolindex-org.iam.gserviceaccount.com --build-service-account projects/toolindex-org/serviceAccounts/toolindex-build@toolindex-org.iam.gserviceaccount.com --allow-unauthenticated
-firebase deploy --only hosting --project toolindex-org
 ```
 
-[Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
+[Backend: configuration and deployment](../../../../backend/README.md) · [Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
 
 ## Suchmaschinen
 
-Bestätige die URL-Präfix-Property toolindex.org mit dem vom Eigentümer bereitgestellten Nachweis und reiche sitemap.xml in Search Console und Bing Webmaster Tools ein. Keine Tokens erfinden oder Einreichung als Indexierungsnachweis behandeln. Die robots.txt im Stammverzeichnis erlaubt Crawling. Optionale IndexNow-Meldungen werden erst nach Veröffentlichung der passenden Eigentumsdatei und Seiten gesendet.
+Die Sitemap enthält öffentliche Tools und sichtbare Profile. Private Kontoseiten, ausstehende Tools und Zugangsdaten fehlen darin. Eigentümer können sie bei Suchmaschinen einreichen; Indexierung oder erfundene Eigentumsnachweise werden nicht versprochen.
 
-[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/) · [IndexNow](https://www.indexnow.org/documentation)
+[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/)
 
-## Kompatibilität und Prüfung
+## Kompatibilität
 
-Alte /harnesses/-Seiten leiten auf /tools/ weiter. Ursprüngliche Badge-URLs und Beschriftungen bleiben gültig, ohne den einmaligen 14-Tage-Boost zurückzusetzen. GitHub leitet das frühere Repository auf OpenRootdev/toolindex um. Prüfungen bleiben begrenzte Nachweise. CI führt eingereichten Werkzeugcode niemals aus und installiert keine seiner Abhängigkeiten.
+Alte Eintragsrouten und Badge-Erkennung bleiben erhalten. Neue Einreichungen nutzen ToolIndex-Konten oder MCP und werden vor Veröffentlichung von Menschen geprüft. Konfiguration und Bereitstellung stehen im Backend-Leitfaden.

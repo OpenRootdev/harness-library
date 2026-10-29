@@ -13,9 +13,9 @@ DEFINITION = ('ToolIndex is an open directory of tools AI agents can use: skills
               'configuration, licensing and review scope.')
 WELCOME = 'New submissions are welcome. Share a useful tool that an AI agent can actually use.'
 SUBMIT_STEPS = [
-    ('Share your tool', 'Open the short GitHub form with a name, source link, tool type and the task it helps an agent do. No fork or pull request is needed.'),
+    ('Create your profile', 'Sign in to ToolIndex, choose a creator handle and add your bio and website. No GitHub issue or pull request is required.'),
     ('Explain how to use it', 'Link the package, focused source, service or API documentation. State version, license or service terms, installation or connection steps, costs and manual setup.'),
-    ('Get reviewed and listed', 'Maintainers check the setup and scope, ask questions in your issue if needed, and publish approved listings. Every listing links directly to its source.')
+    ('Get reviewed and listed', 'Save a private draft and request review from your account or through MCP. Review feedback stays in your workspace; approved listings link directly to their source.')
 ]
 FAQ = [
     ('Which tools can I submit?', 'Skills, MCP servers, CLIs, APIs, libraries, plugins, workflows and harnesses are welcome. Explain how an agent uses the tool and what users need to set up.'),
@@ -23,7 +23,7 @@ FAQ = [
     ('Can I submit a hosted or commercial tool?', 'Yes. Link the source or official documentation and service endpoint, explain authentication, pricing and usage terms, and disclose required accounts. For mixed source repositories, identify a focused installation path.'),
     ('Does a listing mean it works with every model?', 'No. Each page states its review scope, evidence and manual prerequisites. Setup reviewed and artifacts checked are different claims; neither guarantees every platform or model.'),
     ('Is an image required?', 'No. A logo or custom image is optional. Without one, the listing uses initials. Only supply images you are entitled to use, with a source link.'),
-    ('Is submitting free?', 'Yes. Browsing and submitting to ToolIndex are free. The listed tool may have its own pricing. A GitHub account is needed to open the submission form; no ToolIndex account is required.')
+    ('Is submitting free?', 'Yes. Browsing and submitting to ToolIndex are free. The listed tool may have its own pricing. A ToolIndex account is needed to submit through the UI or MCP. Browsing stays public without authentication.')
 ]
 
 def h(value):
@@ -94,7 +94,7 @@ def faq_html(items=FAQ):
 def invitation():
     return ('<section class="submission-callout" id="submissions" aria-labelledby="welcome-title">'
             '<div><p class="welcome-label">New submissions welcome</p><h2 id="welcome-title">Your tool could be next.</h2>'
-            '<p>Built a useful skill, MCP server, CLI, API or agent tool? We’d love to list it. Share your repository and setup instructions through a short GitHub form.</p>'
+            '<p>Built a useful skill, MCP server, CLI, API or agent tool? We’d love to list it. Share your repository and setup instructions from your account or through your agent.</p>'
             '<p class="submission-note">Free to submit. No fork or pull request needed.</p></div>'
             '<div class="submission-action">' + a('Submit your tool →',local('submit/'),'button')
             + '<span class="welcome-hand" aria-hidden="true">share the good stuff</span></div></section>')
@@ -160,16 +160,16 @@ def submission():
     return (a('← Back to library',BASE,'back')+'<div class="guide-head"><p class="welcome-label">New submissions welcome</p>'
             '<h1>Share a tool agents can use.</h1><p>'+h(WELCOME)+'</p>'
             '<p>A skill, API, CLI, plugin or complete workflow can qualify. Harneloop is optional.</p><div class="actions">'
-            + a('Open the submission form ↗',FORM,'button') + a('Prefer a pull request?',REPOSITORY+'/blob/main/CONTRIBUTING.md')+'</div></div>'
+            + a('Submit through ToolIndex →',local('account/'),'button') + a('Submit with your agent',local('developers/'))+'</div></div>'
             '<div class="guide-grid"><section aria-label="Submission steps"><ol class="submit-steps">'+steps+'</ol>'
             '<section class="guide-checklist"><h2>What to have ready</h2><ul>'
             '<li>Your source link, tool name and type and a short description of the task.</li>'
             '<li>Install or connection steps, version, license or service terms, and manual setup notes.</li>'
             '<li>A focused installation path for mixed repositories, or service/API access instructions.</li>'
             '</ul><p>A logo or custom image, component counts and test evidence are optional. Write “none” where no manual setup is needed.</p>'
-            '<p>A GitHub account is all you need to submit. Please share setup requirements, not secrets or credentials.</p></section></section>'
+            '<p>Create a ToolIndex account and verify your email to submit. Please share setup requirements, not secrets or credentials.</p></section></section>'
             '<aside class="submission-aside"><h2>What we’re looking for</h2><p>Useful tools for coding, research, data, creative work, Blender and operations. Local packages and hosted services are welcome.</p>'
-            '<h3>Clear setup matters</h3><p>We review installation, package scope and any claimed evidence before publishing. We’ll use your submission issue for questions and updates.</p>'
+            '<h3>Clear setup matters</h3><p>We review installation, package scope and any claimed evidence before publishing. Review feedback and status appear in your account and MCP tools.</p>'
             '<h3>A free listing boost</h3><p>After approval, adding the linked listing badge near the top of your README can earn one transparent 14-day community boost.</p>'
             + a('Read the badge program ↗',REPOSITORY+'/blob/main/docs/badge-program.md')+'</aside></div>'
             '<section class="faq-section"><h2>Before you submit</h2>'+faq_html(FAQ[:3]+FAQ[4:])+'</section>')
@@ -184,7 +184,7 @@ def about():
             '<h2>Review and attribution</h2><p>“Setup reviewed” means the installation and distribution were examined. “Artifacts checked” refers to the specific evidence described on the page. Neither means every model or platform was tested.</p>'
             '<p>Harneloop is optional. “Built with Harneloop” is a separate attribution for harnesses created or improved through '+a('Harneloop','https://harneloop.kaelux.dev/')+'. The directory is not limited to that framework.</p>'
             '<h2>Who maintains it?</h2><p>Maintained by '+a('Kristofer Jussmann (@Ker102)','https://github.com/Ker102')
-            + '. Source, changes, submission issues and review records are public in '+a('the ToolIndex repository',REPOSITORY)+'.</p>'
+            + '. The source and code changes are public in '+a('the ToolIndex repository',REPOSITORY)+'.</p>'
             '<p>'+h(WELCOME)+' '+a('See how to submit →',local('submit/'))+'</p>'
             '<h2>Common questions</h2>'+faq_html()+'</article>')
 
@@ -242,7 +242,7 @@ def markdown_entry(e):
     return '\n\n'.join(lines)+'\n'
 
 def markdown_submit():
-    parts=['# Submit an agent tool to ToolIndex','\n> '+WELCOME,f'\nCanonical page: {SITE}submit/',f'\nSubmission form: {FORM}','No fork or pull request is required. A GitHub account is needed for the form.']
+    parts=['# Submit an agent tool to ToolIndex','\n> '+WELCOME,f'\nCanonical page: {SITE}submit/',f'\nSubmission workspace: {SITE}account/',f'\nAgent and MCP guide: {SITE}developers/','No fork or pull request is required. Sign in to ToolIndex and verify your email before submitting; every submission requires review.']
     for i,(title,body) in enumerate(SUBMIT_STEPS):parts += [f'\n## {i+1}. {title}',body]
     parts += ['\n## Before you submit','Bring a source link, tool type, purpose/category, package or service URL, version, license or terms, setup steps and authentication/cost notes. Images, component counts and test evidence are optional. Harneloop is optional.']
     for q,answer in FAQ:parts += ['\n## '+q,answer]

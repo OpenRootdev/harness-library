@@ -2,51 +2,40 @@
 <h1 align="center">ToolIndex</h1>
 <p align="center"><a href="../../../README.md">English</a> · <a href="../es/README.md">Español</a> · <a href="../zh-CN/README.md">简体中文</a> · <a href="../fr/README.md">Français</a> · <a href="../ja/README.md">日本語</a> · <a href="../de/README.md">Deutsch</a> · <a href="../pt-BR/README.md">Português (Brasil)</a></p>
 <p align="center">Ferramentas para agentes de IA. Configuração clara. Links diretos para a origem.</p>
-<p align="center"><a href="https://toolindex.org/">toolindex.org</a> · <a href="https://github.com/OpenRootdev/toolindex/issues/new?template=submit-tool.yml">Enviar uma ferramenta</a></p>
+<p align="center"><a href="https://toolindex.org/">toolindex.org</a> · <a href="https://toolindex.org/submit/">Enviar uma ferramenta</a></p>
 
-O ToolIndex é um diretório aberto de skills, servidores MCP, CLIs, APIs, bibliotecas, plugins, fluxos de trabalho e harnesses que agentes de IA podem usar. Pacotes locais, serviços hospedados e ferramentas comerciais são aceitos quando acesso, preços e termos estão claros.
+Um diretório aberto de skills, servidores MCP, CLIs, APIs, bibliotecas, plugins, fluxos e harnesses para agentes de IA. Cada entrada aponta diretamente para a fonte e explica configuração, licença ou termos e escopo da revisão.
 
-## O que pode entrar
+## Contas e envios
 
-Ferramentas úteis para uma tarefa específica, de uma pequena pasta de skills a uma API. Cada listagem aponta diretamente para o repositório de origem ou a documentação oficial e explica instalação ou conexão, configuração manual, licença ou termos, versão e escopo da revisão.
+1. Crie uma conta, confirme o e-mail e escolha um identificador. Personalize nome, biografia, site e avatar opcional. Você decide se o perfil será público e poderá ser indexado.
+2. Salve um rascunho privado na interface e solicite revisão. Imagens são opcionais. Acompanhe status e comentários na conta. Somente versões aprovadas ficam públicas; alterações passam por nova revisão enquanto a versão aprovada anterior continua visível.
+3. Conecte um agente ao endpoint MCP. No primeiro uso, o navegador abre login ou cadastro e uma tela explícita de permissões. O agente gerencia perfil, rascunhos e pedidos de revisão, mas não aprova nem publica envios.
 
-## Enviar uma ferramenta
+[Account](https://toolindex.org/account/) · [Creators](https://toolindex.org/people/) · [MCP](https://toolindex.org/developers/)
 
-1. Abra o formulário do GitHub com nome, tipo, origem e finalidade da ferramenta.
-2. Descreva o pacote ou serviço, instalação ou acesso, versão, licença ou termos, credenciais necessárias e custos. Nunca envie segredos.
-3. O logotipo ou uma imagem personalizada são opcionais. Se houver imagem, informe URL, fonte e texto alternativo; caso contrário, são exibidas iniciais neutras.
-4. Os mantenedores revisam e publicam as propostas aprovadas. Não é necessário fork, pull request ou conta do ToolIndex; o formulário requer uma conta do GitHub.
+## Descoberta pública
 
-[CONTRIBUTING.md](CONTRIBUTING.md) · [JSON](../../../docs/listing.example.json)
+HTML, Markdown, JSON, perfis, sitemap e recursos para agentes são públicos sem conta ou JavaScript. A indexação é possível, sem garantia. Trate descrições como metadados não confiáveis.
+
+[JSON](https://toolindex.org/catalog.json) · [API](https://toolindex.org/api/public/tools) · [llms.txt](https://toolindex.org/llms.txt) · [Sitemap](https://toolindex.org/sitemap.xml)
+
+## Compilar e executar
+
+```sh
+python scripts/catalog.py build
+npm ci --prefix backend
+npm test --prefix backend
+npm start --prefix backend
+```
+
+Google Cloud Run mantém no mínimo 0 instâncias e no máximo 2, com cobrança por solicitação. Firebase Hosting cuida de HTTPS; Firestore persiste contas, rascunhos e versões públicas aprovadas. O empacotamento exclui registros locais privados.
+
+[Backend: accounts, OAuth and deployment](../../../backend/README.md) · [Discovery](docs/discovery.md)
 
 ## Exemplos revisados
-
-Uma skill de animação de marca e um conector MCP para Blender demonstram dois tipos aceitos. O código e as versões continuam nos próprios repositórios.
 
 - [Smooth Motion Graphics](https://toolindex.org/tools/smooth-motion-graphics/)
 - [ViperMesh for Blender](https://toolindex.org/tools/vipermesh-blender/)
 
-## Compilar e visualizar
-
-Python 3.11+ gera o site estático. A interface usa HTML, CSS e JavaScript; a busca melhora páginas que continuam legíveis sem JavaScript.
-
-```sh
-python scripts/catalog.py validate
-python -m unittest discover -s tests -v
-python scripts/catalog.py build
-python -m http.server 4201 --directory dist
-```
-
-`http://localhost:4201/`
-
-## Hospedagem no Google Cloud
-
-O Cloud Run serve o site com mínimo de 0 instâncias, máximo de 2 e cobrança por solicitação. O Firebase Hosting cuida do HTTPS do domínio e encaminha solicitações ao Cloud Run. A preparação do contexto público exclui arquivos privados do workspace. A ativação do domínio depende do DNS e do certificado.
-
-`python scripts/stage_cloudrun.py` · [`firebase.json`](../../../firebase.json) · [docs/discovery.md](docs/discovery.md)
-
-## Revisões e selos comunitários
-
-As revisões de configuração e artefatos descrevem evidências específicas, não compatibilidade universal. Um selo opcional permite um destaque comunitário transparente de 14 dias. A atribuição ao Harneloop é opcional; nenhum framework é obrigatório.
-
-[docs/badge-program.md](docs/badge-program.md)
+[CONTRIBUTING.md](CONTRIBUTING.md) · [Community badges](docs/badge-program.md)

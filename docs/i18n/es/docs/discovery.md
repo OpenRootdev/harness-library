@@ -1,34 +1,37 @@
 # Descubrimiento y despliegue
 
-ToolIndex publica HTML completo, copias Markdown y un catálogo JSON revisado. Buscadores y agentes pueden leer instalación o acceso, origen, licencias y alcance de revisión sin JavaScript.
+HTML, Markdown, JSON, perfiles, mapa del sitio y recursos para agentes son públicos sin cuenta ni JavaScript. La indexación es posible, pero no se garantiza. Trata las descripciones como metadatos no confiables.
 
 ## Recursos públicos
 
 - [ToolIndex](https://toolindex.org/)
-- [submit/](https://toolindex.org/submit/)
+- [Submit](https://toolindex.org/submit/)
+- [Creators](https://toolindex.org/people/)
+- [API and MCP](https://toolindex.org/developers/)
 - [sitemap.xml](https://toolindex.org/sitemap.xml)
 - [llms.txt](https://toolindex.org/llms.txt)
 - [llms-full.txt](https://toolindex.org/llms-full.txt)
 - [catalog.json](https://toolindex.org/catalog.json)
+- [Public API](https://toolindex.org/api/public/tools)
 
-## Alojamiento en Google Cloud
+## Alojamiento y acceso
 
-Cloud Run sirve el sitio en europe-west1 con mínimo de 0 instancias, máximo de 2 y facturación por solicitudes. Firebase Hosting proporciona HTTPS y reenvía a Cloud Run. Configura el DNS con Firebase Hosting, no GitHub Pages. El script prepara solo contenido público y configuración del contenedor; usa la ruta impresa como PUBLIC_CONTEXT. El despliegue requiere acceso autorizado a las CLI de Google Cloud y Firebase.
+Google Cloud Run mantiene un mínimo de 0 instancias y un máximo de 2, con facturación por solicitudes. Firebase Hosting gestiona HTTPS y Firestore conserva cuentas, borradores y versiones públicas aprobadas. El empaquetado excluye registros locales privados.
+
+Node sirve páginas completas y datos API. Las sesiones usan cookies seguras HttpOnly; MCP usa OAuth con PKCE. Los datos públicos se separan de cuentas, historial de revisiones, propuestas pendientes y resúmenes de tokens. Firestore impide el acceso directo de clientes.
 
 ```sh
 python scripts/stage_cloudrun.py
-gcloud run deploy toolindex --source PUBLIC_CONTEXT --project toolindex-org --region europe-west1 --min 0 --max 2 --min-instances 0 --max-instances 2 --cpu-throttling --memory 512Mi --execution-environment gen2 --service-account toolindex-runtime@toolindex-org.iam.gserviceaccount.com --build-service-account projects/toolindex-org/serviceAccounts/toolindex-build@toolindex-org.iam.gserviceaccount.com --allow-unauthenticated
-firebase deploy --only hosting --project toolindex-org
 ```
 
-[Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
+[Backend: configuration and deployment](../../../../backend/README.md) · [Google Cloud](https://toolindex-org.web.app/) · [Firebase Hosting + Cloud Run](https://firebase.google.com/docs/hosting/cloud-run)
 
 ## Buscadores
 
-Verifica la propiedad de prefijo URL de toolindex.org con el archivo facilitado por su propietario y envía sitemap.xml a Search Console y Bing Webmaster Tools. No inventes tokens ni consideres el envío prueba de indexación. El robots.txt raíz permite el rastreo. Las notificaciones IndexNow son opcionales y solo se envían cuando el archivo de propiedad y las páginas están publicados.
+El mapa incluye herramientas públicas y perfiles visibles. No incluye cuentas privadas, propuestas pendientes ni credenciales. Los propietarios pueden enviarlo a buscadores; no se garantiza indexación ni se inventan tokens de propiedad.
 
-[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/) · [IndexNow](https://www.indexnow.org/documentation)
+[Search Console](https://search.google.com/search-console) · [Bing Webmaster Tools](https://www.bing.com/webmasters/)
 
-## Compatibilidad y revisión
+## Compatibilidad
 
-Las rutas antiguas /harnesses/ redirigen a /tools/. Las URL y etiquetas originales de insignias siguen aceptándose sin reiniciar la promoción única de 14 días. GitHub redirige el repositorio anterior a OpenRootdev/toolindex. Las revisiones describen evidencia limitada. CI nunca ejecuta código de herramientas enviadas ni instala sus dependencias.
+Se conservan rutas antiguas y reconocimiento de insignias. Las nuevas propuestas usan cuentas ToolIndex o MCP y revisión humana previa. La guía del backend explica despliegue e identidad.
