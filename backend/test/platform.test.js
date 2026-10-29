@@ -140,3 +140,14 @@ test('HTTP: bounded request rates apply before account authorization or file acc
   const limited=await call('/api/me',{user:'none'});assert.equal(limited.status,429);
   assert.ok(limited.headers.get('ratelimit'));
 });
+
+test('HTTP: only configured social providers are public and private auth returns stay off search engines',async t=>{
+  const {call}=await httpFixture(t,{signInProviders:'google.com,unconfigured.example,github.com'});
+  const config=await call('/api/config');assert.equal(config.headers.get('cache-control'),'no-store');
+  const data=await config.json();assert.deepEqual(data.signInProviders,['google.com','github.com']);assert.ok(!data.clientSecret);
+  const page=await call('/account/sign-in/?next=%2Fauthorize%2Fconsent%2F%3Frequest%3Dexample');
+  assert.equal(page.headers.get('cache-control'),'private, no-store');
+  assert.equal(page.headers.get('x-robots-tag'),'noindex, nofollow');
+  assert.ok((await page.text()).includes('id="social-sign-in"'));
+  assert.ok(page.headers.get('content-security-policy').includes('https://www.gstatic.com/firebasejs/13.1.0/'));
+});

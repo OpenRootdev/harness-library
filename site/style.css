@@ -355,3 +355,5 @@ button:disabled, input:disabled { cursor: default; }
 input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible { outline:3px solid #e88546; outline-offset:3px; }
 @media(max-width:800px) { .workspace-grid { grid-template-columns:1fr; gap:36px; } .site-header nav { flex-wrap:wrap; gap:12px; } .header { align-items:flex-start; } .account-top { align-items:flex-start; } }
 @media(max-width:440px) { .field-row { grid-template-columns:1fr; } .site-header .github { display:none; } }
+
+.social-sign-in:not([hidden]) { display: grid; gap: 10px; margin: 24px 0; }

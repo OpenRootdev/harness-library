@@ -15,7 +15,7 @@ npm start --prefix backend
 
 The runtime uses Node.js 24+, Firebase Admin application-default credentials and the existing Google Cloud project. Production has no process-memory storage fallback. The test suite injects an isolated memory store and fake identity verifier, exercises the real HTTP/OAuth/MCP handlers and never contacts a third-party tool or sends email.
 
-Production configuration: `PUBLIC_ORIGIN`, `GOOGLE_CLOUD_PROJECT`, `FIREBASE_API_KEY`, `ADMIN_EMAILS`, optional `PORT`. The Firebase web API key is a public project identifier, not a server credential. Do not commit local environment files, service-account keys, browser cookies, OAuth tokens or deployment receipts. Cloud Run uses its runtime service account instead of a downloaded key.
+Production configuration: `PUBLIC_ORIGIN`, `GOOGLE_CLOUD_PROJECT`, `FIREBASE_API_KEY`, `ADMIN_EMAILS`, optional `PORT` and `SIGN_IN_PROVIDERS` (comma-separated `google.com` and/or `github.com` only after enabling the matching Firebase provider). The Firebase web API key is a public project identifier, not a server credential. Do not commit local environment files, service-account keys, browser cookies, OAuth tokens or deployment receipts. Cloud Run uses its runtime service account instead of a downloaded key.
 
 ## Accounts and profiles
 
@@ -50,3 +50,5 @@ User-supplied strings are escaped in HTML and JSON-LD. Install text is displayed
 ## Deployment
 
 Use `python scripts/stage_cloudrun.py` to create a clean allowlisted context containing only runtime source, locked package manifests, layout and a fresh public build. Tests, local credentials, private receipts, plans and stale build files are excluded. The container runs as the unprivileged Node user. Preserve min instances 0, max instances 2 and request-based CPU billing when deploying. Firebase Hosting keeps custom-domain HTTPS and routes to Cloud Run. New public data is read from Firestore rather than requiring a source deployment for each approved listing.
+
+Social sign-in uses the official pinned Firebase browser SDK from Google's CDN, in-memory persistence and a popup. Only configured provider IDs appear in the public config; client secrets stay in Firebase. Provider ID tokens are exchanged for the existing secure server cookie, then the SDK signs out. No provider API access is requested beyond basic identity and, for GitHub, email. The safe return path preserves a pending MCP consent request. Provider collisions require the existing sign-in method and never silently merge profiles.

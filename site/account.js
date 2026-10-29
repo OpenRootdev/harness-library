@@ -12,7 +12,28 @@
   async function attempt(fn){try{await fn();}catch(e){if(e.status===401&&mode!=='auth'&&mode!=='email-action'){signIn();return;}say(e.message,true);}}
 
   if(mode==='auth'){
+    let socialBusy=false;
+    api('/api/config').then(async config=>{
+      if(!config.signInProviders?.length)return;
+      const social=await import('/social-auth.js'), connect=social.prepareSocialSignIn(config);
+      const box=document.getElementById('social-sign-in');
+      for(const [providerId,label]of [['google.com','Google'],['github.com','GitHub']]){
+        if(!config.signInProviders.includes(providerId))continue;
+        const button=el('button','Continue with '+label,'button');button.type='button';
+        button.onclick=async()=>{
+          if(socialBusy)return;socialBusy=true;say('Opening '+label+' sign-in...');
+          try{
+            await connect(providerId,async idToken=>{await api('/api/account/session','POST',{idToken});});
+            location.assign(safeNext(new URLSearchParams(location.search).get('next')));
+          }catch(error){say(error.status?error.message:social.socialError(error),true);}
+          finally{socialBusy=false;}
+        };
+        box.append(button);
+      }
+      box.hidden=false;
+    }).catch(()=>say('Social sign-in could not load. You can still sign in with email.',true));
     document.getElementById('auth-form').addEventListener('submit',e=>{e.preventDefault();attempt(async()=>{
+      if(socialBusy)return;
       const form=e.currentTarget, data=fields(form), action=e.submitter?.value||'signin';
       if(action==='reset'){if(!data.email||!form.elements.email.validity.valid)throw new Error('Enter your email address first.');await firebase('sendOobCode',{requestType:'PASSWORD_RESET',email:data.email});say('If an account uses this address, a password reset email will arrive.');return;}
       say(action==='signup'?'Creating your account...':'Signing in...');
