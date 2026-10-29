@@ -55,7 +55,7 @@ class PublishingTests(unittest.TestCase):
         self.assertIn('New submissions welcome',' '.join(page.data))
     def test_sitemap_contains_only_existing_canonical_pages(self):
         root=ET.parse(self.out/'sitemap.xml').getroot();locations=[el.text for el in root.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
-        self.assertEqual(len(locations),5);self.assertEqual(len(set(locations)),5)
+        n=3+len(self.catalog['listings']);self.assertEqual(len(locations),n);self.assertEqual(len(set(locations)),n)
         for url in locations:
             self.assertNotIn('#',url);self.assertTrue((self.out/url.removeprefix(p.SITE)/'index.html').is_file())
     def test_json_and_html_escape_submitted_script_content(self):

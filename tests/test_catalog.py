@@ -12,7 +12,7 @@ class CatalogTests(unittest.TestCase):
         self.now=datetime(2026,10,10,12,tzinfo=c.UTC)
         self.badge=f'[![Listed in Harness Library]({c.SITE}badges/{self.entry["id"]}.svg)]({c.SITE}#{self.entry["id"]})'
     def test_seed_entries_valid(self):
-        self.assertEqual(len(c.checked_catalog()['listings']),2)
+        self.assertEqual(len(c.checked_catalog()['listings']),len(c.entries()))
     def test_install_and_manual_setup_are_required(self):
         for field in ['installation','manual_setup']:
             e=copy.deepcopy(self.entry);e.pop(field)
