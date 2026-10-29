@@ -6,7 +6,7 @@ import { initializeApp, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
-import { mcpAuthRouter } from '@modelcontextprotocol/sdk/server/auth/router.js';
+import { mcpAuthRouter, createOAuthMetadata } from '@modelcontextprotocol/sdk/server/auth/router.js';
 import { z } from 'zod';
 import { FirestoreStore } from './store.js';
 import { domain, Problem, toolSchema, profileSchema } from './domain.js';
@@ -80,7 +80,10 @@ export async function createApp(options = {}) {
   app.get('/api/account/consent/:id',session,async(req,res)=>json(res,await provider.pending(z.string().max(100).parse(req.params.id))));
   app.post('/api/account/consent/:id',sameOrigin,session,async(req,res)=>json(res,{redirect:await provider.consent(req.user,z.string().max(100).parse(req.params.id),z.boolean().parse(req.body.allow))}));
 
-  app.use(mcpAuthRouter({provider,issuerUrl:new URL(origin),resourceServerUrl:new URL(origin+'/mcp'),serviceDocumentationUrl:new URL(origin+'/developers/'),scopesSupported:SCOPES}));
+  const oauthOptions={provider,issuerUrl:new URL(origin),resourceServerUrl:new URL(origin+'/mcp'),serviceDocumentationUrl:new URL(origin+'/developers/'),scopesSupported:SCOPES};
+  // Advertise only the client authentication method this server accepts.
+  app.get('/.well-known/oauth-authorization-server',(req,res)=>res.json({...createOAuthMetadata(oauthOptions),token_endpoint_auth_methods_supported:['none'],revocation_endpoint_auth_methods_supported:['none']}));
+  app.use(mcpAuthRouter(oauthOptions));
   app.use('/mcp',async(req,res,next)=>{
     res.set('Cache-Control','no-store');
     if(req.method==='OPTIONS') return res.set({'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization, content-type, mcp-protocol-version, mcp-session-id','Access-Control-Allow-Methods':'POST, GET, DELETE, OPTIONS'}).status(204).end();

@@ -119,7 +119,7 @@ test('HTTP: complete OAuth PKCE, MCP tools and persisted provider restart',async
   const {call,store,base}=await httpFixture(t);
   let r=await call('/mcp',{method:'POST',body:{}});assert.equal(r.status,401);assert.ok(r.headers.get('www-authenticate').includes('/.well-known/oauth-protected-resource/mcp'));
   assert.equal((await call('/.well-known/oauth-protected-resource/mcp')).status,200);
-  const md=await(await call('/.well-known/oauth-authorization-server')).json();assert.equal(md.issuer,origin+'/');
+  const md=await(await call('/.well-known/oauth-authorization-server')).json();assert.equal(md.issuer,origin+'/');assert.deepEqual(md.token_endpoint_auth_methods_supported,['none']);
   r=await call('/register',{method:'POST',body:{client_name:'Integration agent',redirect_uris:['http://localhost:7777/cb'],token_endpoint_auth_method:'none',grant_types:['authorization_code','refresh_token'],response_types:['code']}});
   assert.equal(r.status,201);const c=await r.json(),verifier='a'.repeat(64),challenge=createHash('sha256').update(verifier).digest('base64url');
   const params=new URLSearchParams({client_id:c.client_id,redirect_uri:c.redirect_uris[0],response_type:'code',code_challenge:challenge,code_challenge_method:'S256',scope:'tools:read tools:write',resource:origin+'/mcp',state:'keep-state'});
