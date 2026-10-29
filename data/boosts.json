@@ -5,8 +5,22 @@
       "granted_at": "2026-10-09T23:49:46Z",
       "expires_at": "2026-10-23T23:49:46Z",
       "badge_present": true,
-      "last_checked_at": "2026-10-28T11:20:22Z",
+      "last_checked_at": "2026-10-29T11:33:01Z",
       "readme_url": "https://github.com/Ker102/smooth-motion-graphics/blob/main/README.md"
+    },
+    "paper-unfold-frames": {
+      "granted_at": "2026-10-29T11:33:01Z",
+      "expires_at": "2026-11-12T11:33:01Z",
+      "badge_present": true,
+      "last_checked_at": "2026-10-29T11:33:01Z",
+      "readme_url": "https://github.com/OpenRootdev/paper-unfold-frames/blob/main/README.md"
+    },
+    "paper-unfold-mesh": {
+      "granted_at": "2026-10-29T11:33:01Z",
+      "expires_at": "2026-11-12T11:33:01Z",
+      "badge_present": true,
+      "last_checked_at": "2026-10-29T11:33:01Z",
+      "readme_url": "https://github.com/OpenRootdev/paper-unfold-mesh/blob/main/README.md"
     }
   }
 }
