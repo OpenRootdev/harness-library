@@ -89,11 +89,11 @@ test('OAuth grants belong to their user, revoke access and reject unsafe redirec
   await p.revokeToken(client,{token:t.access_token});await assert.rejects(p.verifyAccessToken(t.access_token));
 });
 
-async function httpFixture(t){
+async function httpFixture(t,options={}){
   const users={alice,bob,admin};
   const auth={getUser:async uid=>({...users[uid],emailVerified:users[uid]?.email_verified}),verifySessionCookie:async token=>{if(!users[token])throw Error('bad');return users[token];},verifyIdToken:async()=>({...alice,auth_time:Math.floor(Date.now()/1000)}),createSessionCookie:async()=>'alice'};
   const store=new MemoryStore();
-  const f=await createApp({store,auth,admins:admin.email,origin});
+  const f=await createApp({store,auth,admins:admin.email,origin,...options});
   const server=f.app.listen(0,'127.0.0.1');await once(server,'listening');t.after(()=>new Promise(resolve=>server.close(resolve)));
   const base='http://127.0.0.1:'+server.address().port;
   const call=async(url,{method='GET',body,user='alice',headers={}}={})=>fetch(base+url,{method,redirect:'manual',headers:{Origin:origin,Cookie:'__session='+user,...(body?{'Content-Type':'application/json'}:{}),...headers},...(body?{body:JSON.stringify(body)}:{})});
@@ -131,4 +131,12 @@ test('HTTP: complete OAuth PKCE, MCP tools and persisted provider restart',async
   assert.equal((await token(verifier)).status,400);
   const restarted=oauthProvider(store,origin,async uid=>({uid}));assert.equal((await restarted.verifyAccessToken(tokens.access_token)).extra.uid,'alice');
   r=await call('/mcp',{method:'POST',headers:{Authorization:'Bearer '+tokens.access_token,Accept:'application/json, text/event-stream'},body:{jsonrpc:'2.0',id:1,method:'tools/list',params:{}}});assert.equal(r.status,200);const rpc=await r.json();assert.ok(rpc.result.tools.some(x=>x.name==='submit_tool_for_review'));assert.ok(!rpc.result.tools.some(x=>/approve|publish_tool/.test(x.name)));
+});
+test('HTTP: bounded request rates apply before account authorization or file access',async t=>{
+  const {call}=await httpFixture(t,{httpLimit:3});
+  assert.equal((await call('/llms.txt')).status,200);
+  assert.equal((await call('/api/me',{user:'none'})).status,401);
+  assert.equal((await call('/account/sign-in/')).status,200);
+  const limited=await call('/api/me',{user:'none'});assert.equal(limited.status,429);
+  assert.ok(limited.headers.get('ratelimit'));
 });
